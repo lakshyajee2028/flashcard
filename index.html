@@ -21,7 +21,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Screen overflow stop karne ke liye */
+    overflow: hidden;
     background: #030712;
     color: #f3f4f6;
 }
@@ -48,7 +48,7 @@ body::before {
 .glow-1 { width: 250px; height: 250px; background: #00d2ff; top: -50px; left: -50px; }
 .glow-2 { width: 250px; height: 250px; background: #9d4edd; bottom: -50px; right: -50px; }
 
-/* CONTAINER - STRICT SCREEN HEIGHT FIT */
+/* MAIN CONTAINER */
 .container {
     max-width: 600px;
     height: 100vh;
@@ -61,31 +61,50 @@ body::before {
     overflow: hidden;
 }
 
-/* HEADER */
+/* HEADER AREA */
 header {
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 800;
     background: linear-gradient(90deg, #00d2ff, #9d4edd, #10b981);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* NAVBAR */
+.official-site-btn {
+    color: #00d2ff;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+}
+.official-site-btn:active { background: #00d2ff; color: #000; }
+
+/* NAVBAR & STATS STRIP */
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 6px 10px;
     border-radius: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     gap: 8px;
     flex-shrink: 0;
 }
@@ -98,7 +117,7 @@ header h1 {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     display: none;
     align-items: center;
     gap: 4px;
@@ -111,33 +130,15 @@ header h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.header-right-btns {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.official-site-btn {
-    color: #00d2ff;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 5px 8px;
-    border-radius: 8px;
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    text-align: center;
+    flex: 1;
 }
 
 .btn-add {
     background: linear-gradient(135deg, #9d4edd, #7b2cbf);
     border: none;
     color: white;
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.78rem;
@@ -145,6 +146,32 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 4px;
+    box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
+}
+
+/* TOP STATS BADGES (FILLING KHALI SPACE) */
+.top-stats-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 5px 12px;
+    margin-bottom: 10px;
+    font-size: 0.72rem;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-item b {
+    color: #f3f4f6;
 }
 
 /* SUBJECT GRID */
@@ -221,7 +248,7 @@ header h1 {
 
 .flashcard {
     width: 100%;
-    height: clamp(230px, 38vh, 320px);
+    height: clamp(230px, 38vh, 310px);
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -302,7 +329,7 @@ header h1 {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin: 8px 0;
+    margin: 6px 0;
     flex-shrink: 0;
 }
 
@@ -478,6 +505,9 @@ select.form-control option {
 <div class="container">
     <header>
         <h1>⚡ JEE FlashRecall 3D</h1>
+        <a href="https://Priyanshusingh.pages.dev" target="_blank" class="official-site-btn">
+            <i class="fa-solid fa-globe"></i> Visit Site
+        </a>
     </header>
 
     <div class="nav-bar">
@@ -485,15 +515,14 @@ select.form-control option {
             <i class="fa-solid fa-arrow-left"></i> Back
         </button>
         <span id="navTitle">Select Subject</span>
-        
-        <div class="header-right-btns">
-            <a href="https://Priyanshusingh.pages.dev" target="_blank" class="official-site-btn">
-                <i class="fa-solid fa-globe"></i> Website
-            </a>
-            <button class="btn-add" onclick="openModal()">
-                <i class="fa-solid fa-plus"></i> Add
-            </button>
-        </div>
+        <button class="btn-add" onclick="openModal()">
+            <i class="fa-solid fa-plus"></i> Add Card
+        </button>
+    </div>
+
+    <div class="top-stats-strip">
+        <div class="stat-item"><i class="fa-solid fa-layer-group" style="color:#00d2ff;"></i> Total Cards: <b id="statTotalCards">0</b></div>
+        <div class="stat-item"><i class="fa-solid fa-circle-check" style="color:#10b981;"></i> Revised Today: <b id="statRevisedToday">0</b></div>
     </div>
 
     <div id="subjectView" class="subject-grid">
@@ -566,7 +595,7 @@ select.form-control option {
     </div>
 
     <footer id="appFooter">
-        Built with ❤️ by <a href="https://Priyanshusingh.pages.dev" target="_blank">Priyanshu Singh</a>
+        Crafted with ❤️ by <a href="https://Priyanshusingh.pages.dev" target="_blank">Priyanshu Singh</a>
     </footer>
 </div>
 
@@ -645,7 +674,7 @@ select.form-control option {
 <script>
 const defaultCards = [
     { id: 1, subject: 'physics', chapter: 'Modern Physics', question: 'De Broglie Wavelength of Electron', answer: 'λ = 12.27 / √V Å', image: '', lastRevisedDate: null, saveForLater: false },
-    { id: 2, subject: 'chemistry', chapter: 'Organic Chemistry', question: 'Reimer-Tiemann Reaction', answer: 'Phenol + CHCl3 + KOH -> Salicylaldehyde', image: '', lastRevisedDate: '2026-07-23', saveForLater: true },
+    { id: 2, subject: 'chemistry', chapter: 'Organic Chemistry', question: 'Reimer-Tiemann Reaction', answer: 'Phenol + CHCl3 + KOH -> Salicylaldehyde', image: '', lastRevisedDate: '2026-07-24', saveForLater: true },
     { id: 3, subject: 'maths', chapter: 'Basic Maths', question: 'Logarithm Identity', answer: 'log(a * b) = log(a) + log(b)', image: '', lastRevisedDate: null, saveForLater: false }
 ];
 
@@ -669,6 +698,13 @@ function getDaysDifference(dateStr) {
     const diffTime = today - revisedDate;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     return diffDays < 0 ? 0 : diffDays;
+}
+
+function updateStats() {
+    document.getElementById('statTotalCards').innerText = cards.length;
+    const today = getTodayDateString();
+    const revisedTodayCount = cards.filter(c => c.lastRevisedDate === today).length;
+    document.getElementById('statRevisedToday').innerText = revisedTodayCount;
 }
 
 function selectSubject(sub) {
@@ -718,6 +754,7 @@ function renderSubjectView() {
     document.getElementById('backBtn').style.display = 'none';
     document.getElementById('navTitle').innerText = 'Select Subject';
     document.getElementById('appFooter').style.display = 'block';
+    updateStats();
 }
 
 function renderChapterView() {
@@ -727,13 +764,14 @@ function renderChapterView() {
     document.getElementById('backBtn').style.display = 'flex';
     document.getElementById('navTitle').innerText = `${selectedSubject.toUpperCase()} Chapters`;
     document.getElementById('appFooter').style.display = 'none';
+    updateStats();
 
     const chapContainer = document.getElementById('chapterView');
     const subCards = cards.filter(c => c.subject === selectedSubject);
     const chapters = [...new Set(subCards.map(c => c.chapter))];
 
     if (chapters.length === 0) {
-        chapContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#9ca3af; padding: 20px;">No chapters found. Click "Add" to create one!</p>`;
+        chapContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#9ca3af; padding: 20px;">No chapters found. Click "Add Card" to create one!</p>`;
         return;
     }
 
@@ -756,6 +794,7 @@ function renderRevisionLaterSubCategories() {
     document.getElementById('backBtn').style.display = 'flex';
     document.getElementById('navTitle').innerText = '📌 Revision Later';
     document.getElementById('appFooter').style.display = 'none';
+    updateStats();
 
     const chapContainer = document.getElementById('chapterView');
     chapContainer.innerHTML = `
@@ -781,6 +820,7 @@ function renderDeckView() {
     document.getElementById('backBtn').style.display = 'flex';
     document.getElementById('navTitle').innerText = isRevisionLaterMode ? `Saved Cards` : `${selectedChapter}`;
     document.getElementById('appFooter').style.display = 'none';
+    updateStats();
 
     renderCard();
 
@@ -873,6 +913,7 @@ function toggleRevision() {
         }
         
         saveCards();
+        updateStats();
 
         if (isRevisionLaterMode && cards[realIdx].lastRevisedDate === today) {
             currentDeck.splice(currentIndex, 1);
@@ -979,6 +1020,7 @@ function handleMenuDelete() {
             cards = cards.filter(c => c.id !== contextTargetData.id);
             currentDeck = currentDeck.filter(c => c.id !== contextTargetData.id);
             saveCards();
+            updateStats();
             if (currentIndex >= currentDeck.length) currentIndex = Math.max(0, currentDeck.length - 1);
             closeDeleteModal();
             renderCard();
@@ -989,6 +1031,7 @@ function handleMenuDelete() {
         document.getElementById('confirmDeleteBtn').onclick = () => {
             cards = cards.filter(c => !(c.subject === selectedSubject && c.chapter === contextTargetData));
             saveCards();
+            updateStats();
             closeDeleteModal();
             renderChapterView();
         };
@@ -1053,6 +1096,7 @@ function saveCustomCard(e) {
         }
 
         saveCards();
+        updateStats();
         closeModal();
 
         if (currentView === 'chapter' && !isRevisionLaterMode && selectedSubject === subject) {
