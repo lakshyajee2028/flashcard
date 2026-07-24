@@ -611,23 +611,32 @@
             padding: 4px 0;
         }
 
+        /* ─── FLASHCARD HEIGHT — ENHANCED FOR PHONE ─── */
         .flashcard {
             width: 100%;
-            height: clamp(260px, 42vh, 360px);
+            height: clamp(280px, 46vh, 380px);
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             border-radius: 20px;
         }
+
+        /* Larger height on phones (max-height <= 700px) */
         @media (max-height: 700px) {
             .flashcard {
-                height: clamp(200px, 32vh, 250px);
+                height: clamp(250px, 42vh, 320px);
             }
         }
         @media (max-height: 600px) {
             .flashcard {
-                height: clamp(160px, 26vh, 200px);
+                height: clamp(210px, 36vh, 280px);
+            }
+        }
+        /* On very small screens, keep it comfortable */
+        @media (max-height: 500px) {
+            .flashcard {
+                height: clamp(170px, 30vh, 220px);
             }
         }
 
@@ -735,6 +744,7 @@
             border-color: #e2e8f0;
         }
 
+        /* ─── CARD BODY — INCREASED MAX-HEIGHT ─── */
         .card-body-content {
             text-align: center;
             margin: auto 0;
@@ -744,9 +754,25 @@
             justify-content: center;
             gap: 8px;
             overflow-y: auto;
-            max-height: 190px;
+            max-height: 220px;
             padding: 6px 0;
         }
+        @media (max-height: 700px) {
+            .card-body-content {
+                max-height: 180px;
+            }
+        }
+        @media (max-height: 600px) {
+            .card-body-content {
+                max-height: 150px;
+            }
+        }
+        @media (max-height: 500px) {
+            .card-body-content {
+                max-height: 110px;
+            }
+        }
+
         .card-body-content::-webkit-scrollbar {
             width: 2px;
         }
@@ -1256,7 +1282,7 @@
 
         @media (max-width: 360px) {
             .flashcard {
-                height: clamp(170px, 26vh, 210px);
+                height: clamp(180px, 28vh, 230px);
             }
             .card-body-content {
                 max-height: 120px;
@@ -1283,7 +1309,7 @@
 
         @media (min-width: 768px) and (max-height: 700px) {
             .flashcard {
-                height: clamp(210px, 34vh, 270px);
+                height: clamp(220px, 36vh, 280px);
             }
             .subject-card {
                 padding: 14px 10px;
