@@ -24,6 +24,9 @@ html, body {
     overflow: hidden;
     background: #030712;
     color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body::before {
@@ -48,23 +51,45 @@ body::before {
 .glow-1 { width: 250px; height: 250px; background: #00d2ff; top: -50px; left: -50px; }
 .glow-2 { width: 250px; height: 250px; background: #9d4edd; bottom: -50px; right: -50px; }
 
-/* MAIN CONTAINER */
+/* RESPONSIVE MAIN CONTAINER (Mobile, Laptop, TV Adaptive) */
 .container {
-    max-width: 600px;
+    width: 100%;
+    max-width: 650px;
     height: 100vh;
     height: 100dvh;
     margin: 0 auto;
-    padding: 10px 12px;
+    padding: 12px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
 }
 
+/* MEDIA QUERIES FOR LARGER SCREENS (Desktop & TV) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        height: 92vh;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        padding: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 800px;
+        height: 88vh;
+    }
+}
+
 /* HEADER AREA */
 header {
     text-align: center;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     flex-shrink: 0;
     display: flex;
     justify-content: space-between;
@@ -72,7 +97,7 @@ header {
 }
 
 header h1 {
-    font-size: 1.3rem;
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
     font-weight: 800;
     background: linear-gradient(90deg, #00d2ff, #9d4edd, #10b981);
     -webkit-background-clip: text;
@@ -82,15 +107,15 @@ header h1 {
 .official-site-btn {
     color: #00d2ff;
     text-decoration: none;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 20px;
     background: rgba(0, 210, 255, 0.1);
     border: 1px solid rgba(0, 210, 255, 0.3);
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     transition: all 0.2s ease;
 }
 .official-site-btn:active { background: #00d2ff; color: #000; }
@@ -102,9 +127,9 @@ header h1 {
     align-items: center;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 6px 10px;
+    padding: 8px 12px;
     border-radius: 12px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     gap: 8px;
     flex-shrink: 0;
 }
@@ -113,20 +138,20 @@ header h1 {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.15);
     color: white;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     display: none;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
 }
 
 #navTitle {
     font-weight: 600;
     color: #00d2ff;
-    font-size: 0.88rem;
+    font-size: 0.98rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -138,18 +163,18 @@ header h1 {
     background: linear-gradient(135deg, #9d4edd, #7b2cbf);
     border: none;
     color: white;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
 }
 
-/* TOP STATS BADGES (FILLING KHALI SPACE) */
+/* TOP STATS STRIP */
 .top-stats-strip {
     display: flex;
     justify-content: space-between;
@@ -157,28 +182,89 @@ header h1 {
     background: rgba(15, 23, 42, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    padding: 5px 12px;
-    margin-bottom: 10px;
-    font-size: 0.72rem;
+    padding: 6px 14px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
     color: #9ca3af;
     flex-shrink: 0;
 }
 
-.stat-item {
+.stat-item { display: flex; align-items: center; gap: 6px; }
+.stat-item b { color: #f3f4f6; }
+
+/* 🎯 NEW PREMIUM GLOW BANNER CARD (WITH 📒 FLASHCARD EMOJI) */
+.hero-banner-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.7));
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.08);
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 12px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.stat-item b {
+.hero-banner-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.banner-emoji-box {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: rgba(0, 210, 255, 0.12);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    box-shadow: inset 0 0 10px rgba(0, 210, 255, 0.15);
+}
+
+.banner-content-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.banner-title {
+    font-size: 0.88rem;
+    font-weight: 700;
     color: #f3f4f6;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.banner-subtitle {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 400;
 }
 
 /* SUBJECT GRID */
 .subject-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
     flex: 1;
     align-content: center;
 }
@@ -186,15 +272,15 @@ header h1 {
 .subject-card {
     background: rgba(15, 23, 42, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 16px 10px;
+    border-radius: 16px;
+    padding: 20px 12px;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.subject-card i { font-size: 1.6rem; margin-bottom: 6px; }
-.subject-card h2 { font-size: 0.95rem; font-weight: 600; }
+.subject-card i { font-size: 2rem; margin-bottom: 8px; }
+.subject-card h2 { font-size: 1.05rem; font-weight: 600; }
 
 .subject-card.physics i { color: #00d2ff; }
 .subject-card.chemistry i { color: #ec4899; }
@@ -205,7 +291,7 @@ header h1 {
 .chapter-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 10px;
     flex: 1;
     overflow-y: auto;
     align-content: start;
@@ -216,17 +302,17 @@ header h1 {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #f3f4f6;
-    padding: 10px 8px;
-    border-radius: 10px;
+    padding: 12px 10px;
+    border-radius: 12px;
     cursor: pointer;
     text-align: center;
-    font-weight: 500;
-    font-size: 0.82rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    min-height: 46px;
+    gap: 8px;
+    min-height: 50px;
     word-break: break-word;
 }
 
@@ -248,7 +334,7 @@ header h1 {
 
 .flashcard {
     width: 100%;
-    height: clamp(230px, 38vh, 310px);
+    height: clamp(240px, 38vh, 320px);
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -262,7 +348,7 @@ header h1 {
     inset: 0;
     backface-visibility: hidden;
     border-radius: 16px;
-    padding: 14px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -286,9 +372,9 @@ header h1 {
 }
 
 .time-tag {
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 12px;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -306,18 +392,18 @@ header h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     overflow-y: auto;
     max-height: 180px;
     padding: 4px 0;
 }
 
-.card-title { font-size: 1.05rem; font-weight: 700; user-select: text; }
-.card-subtext { font-size: 0.9rem; color: #cbd5e1; user-select: text; }
+.card-title { font-size: 1.15rem; font-weight: 700; user-select: text; }
+.card-subtext { font-size: 1rem; color: #cbd5e1; user-select: text; }
 
 .card-img {
     max-width: 100%;
-    max-height: 90px;
+    max-height: 95px;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.1);
     object-fit: contain;
@@ -328,14 +414,14 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    margin: 6px 0;
+    gap: 18px;
+    margin: 8px 0;
     flex-shrink: 0;
 }
 
 .circle-toggle-btn, .later-toggle-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -348,7 +434,7 @@ header h1 {
     background: rgba(239, 68, 68, 0.1);
     border: 2px solid #ef4444;
     color: #ef4444;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 .circle-toggle-btn.active {
     background: rgba(16, 185, 129, 0.15);
@@ -360,7 +446,7 @@ header h1 {
     background: rgba(168, 85, 247, 0.1);
     border: 2px solid #a855f7;
     color: #a855f7;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
 }
 .later-toggle-btn.saved {
     background: #a855f7;
@@ -380,11 +466,11 @@ header h1 {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.15);
     color: white;
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 /* CONTEXT MENU */
@@ -403,7 +489,7 @@ header h1 {
 .context-menu-item {
     padding: 8px 10px;
     color: white;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
     border-radius: 6px;
@@ -418,14 +504,14 @@ header h1 {
 footer {
     text-align: center;
     padding: 6px 0;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: #9ca3af;
     flex-shrink: 0;
 }
 
 footer a { color: #00d2ff; text-decoration: none; font-weight: 600; }
 
-/* CUSTOM MODALS */
+/* CUSTOM MODALS & AUTOCOMPLETE */
 .modal {
     position: fixed;
     inset: 0;
@@ -444,27 +530,50 @@ footer a { color: #00d2ff; text-decoration: none; font-weight: 600; }
     border-radius: 18px;
     padding: 18px;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
 }
 
-.form-group { margin-bottom: 10px; }
-.form-group label { display: block; margin-bottom: 3px; font-size: 0.78rem; color: #cbd5e1; }
+.form-group { margin-bottom: 12px; position: relative; }
+.form-group label { display: block; margin-bottom: 4px; font-size: 0.82rem; color: #cbd5e1; }
 
 .form-control {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     background: #1e293b;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     color: #f3f4f6;
     outline: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
-select.form-control option {
-    background-color: #0f172a;
-    color: #f3f4f6;
+/* AUTO-SUGGESTION DROP-DOWN */
+.suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1e293b;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 0 0 8px 8px;
+    max-height: 120px;
+    overflow-y: auto;
+    z-index: 10;
+    display: none;
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.suggestion-item:hover {
+    background: rgba(0, 210, 255, 0.15);
+    color: #00d2ff;
 }
 
 .modal-actions {
@@ -480,7 +589,7 @@ select.form-control option {
     color: #cbd5e1;
     padding: 6px 12px;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
 }
@@ -491,7 +600,7 @@ select.form-control option {
     color: white;
     padding: 6px 12px;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
 }
@@ -525,6 +634,14 @@ select.form-control option {
         <div class="stat-item"><i class="fa-solid fa-circle-check" style="color:#10b981;"></i> Revised Today: <b id="statRevisedToday">0</b></div>
     </div>
 
+    <div class="hero-banner-card">
+        <div class="banner-emoji-box">📒</div>
+        <div class="banner-content-text">
+            <div class="banner-title">Smart Flashcards Deck <span style="color:#00d2ff;">⚡</span></div>
+            <div class="banner-subtitle">Revise formulas, equations & concepts effortlessly</div>
+        </div>
+    </div>
+
     <div id="subjectView" class="subject-grid">
         <div class="subject-card physics" onclick="selectSubject('physics')">
             <i class="fa-solid fa-atom"></i>
@@ -551,7 +668,7 @@ select.form-control option {
             <div class="flashcard" id="flashcard" onclick="flipCard()">
                 <div class="card-face card-front">
                     <div class="card-header-tag">
-                        <span id="cardSubjectBadge" style="font-size: 0.7rem; color: #9ca3af; text-transform: uppercase;"></span>
+                        <span id="cardSubjectBadge" style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; font-weight: 600;"></span>
                         <span class="time-tag tag-red" id="timeTag">
                             <i class="fa-regular fa-clock"></i> Never Revised
                         </span>
@@ -560,20 +677,20 @@ select.form-control option {
                         <div class="card-title" id="cardQuestion">Question</div>
                         <img id="cardFrontImg" class="card-img" style="display:none;" />
                     </div>
-                    <div style="text-align: center; font-size: 0.7rem; color: #94a3b8;">
+                    <div style="text-align: center; font-size: 0.75rem; color: #94a3b8;">
                         <i class="fa-solid fa-rotate"></i> Tap to flip (Press & hold for options)
                     </div>
                 </div>
 
                 <div class="card-face card-back">
                     <div class="card-header-tag">
-                        <span style="font-size: 0.7rem; color: #00d2ff;">Solution / Answer</span>
+                        <span style="font-size: 0.75rem; color: #00d2ff; font-weight:600;">Solution / Answer</span>
                     </div>
                     <div class="card-body-content">
                         <div class="card-subtext" id="cardAnswer">Answer</div>
                         <img id="cardBackImg" class="card-img" style="display:none;" />
                     </div>
-                    <div style="text-align: center; font-size: 0.7rem; color: #94a3b8;">Tap to flip back</div>
+                    <div style="text-align: center; font-size: 0.75rem; color: #94a3b8;">Tap to flip back</div>
                 </div>
             </div>
         </div>
@@ -589,7 +706,7 @@ select.form-control option {
 
         <div class="deck-navigation">
             <button class="nav-btn" onclick="prevCard()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
-            <span style="font-weight: 600; color: #9ca3af; font-size: 0.82rem;" id="cardCounter">0 / 0</span>
+            <span style="font-weight: 600; color: #9ca3af; font-size: 0.88rem;" id="cardCounter">0 / 0</span>
             <button class="nav-btn" onclick="nextCard()">Next <i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
@@ -611,36 +728,39 @@ select.form-control option {
 <div class="modal" id="cardModal">
     <div class="modal-content">
         <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-            <h3 style="color: #00d2ff; font-size: 1rem;" id="modalHeading">Add New Flashcard</h3>
-            <span style="cursor: pointer; font-size: 1.1rem;" onclick="closeModal()">&times;</span>
+            <h3 style="color: #00d2ff; font-size: 1.05rem;" id="modalHeading">Add New Flashcard</h3>
+            <span style="cursor: pointer; font-size: 1.2rem;" onclick="closeModal()">&times;</span>
         </div>
         <form id="addCardForm" onsubmit="saveCustomCard(event)">
             <input type="hidden" id="editCardId" value="" />
             <div class="form-group">
                 <label>Subject</label>
-                <select class="form-control" id="inputSubject" required>
+                <select class="form-control" id="inputSubject" required onchange="handleSubjectChange()">
                     <option value="physics">Physics</option>
                     <option value="chemistry">Chemistry</option>
                     <option value="maths">Maths</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Chapter Name</label>
-                <input type="text" class="form-control" id="inputChapter" placeholder="e.g. Modern Physics" required />
+                <input type="text" class="form-control" id="inputChapter" placeholder="e.g. Vectors & Calculus" autocomplete="off" required oninput="handleChapterInput()" />
+                <div class="suggestions-box" id="chapterSuggestions"></div>
             </div>
+
             <div class="form-group">
                 <label>Question / Title</label>
-                <input type="text" class="form-control" id="inputQuestion" placeholder="e.g. De Broglie Wavelength" required />
+                <input type="text" class="form-control" id="inputQuestion" placeholder="e.g. Dot Product Formula" required />
             </div>
             <div class="form-group">
                 <label>Answer / Formula</label>
-                <textarea class="form-control" id="inputAnswer" rows="2" placeholder="e.g. λ = 12.27 / √V Å"></textarea>
+                <textarea class="form-control" id="inputAnswer" rows="2" placeholder="e.g. A · B = |A||B| cos(θ)"></textarea>
             </div>
             <div class="form-group">
                 <label>Attach Image (Optional)</label>
                 <input type="file" class="form-control" id="inputImage" accept="image/*" />
             </div>
-            <button type="submit" class="btn-add" style="width:100%; justify-content:center; margin-top:8px; padding:8px;">Save Card</button>
+            <button type="submit" class="btn-add" style="width:100%; justify-content:center; margin-top:8px; padding:10px;">Save Card</button>
         </form>
     </div>
 </div>
@@ -663,7 +783,7 @@ select.form-control option {
     <div class="modal-content" style="text-align: center;">
         <div style="font-size: 2rem; color: #ef4444; margin-bottom: 4px;">⚠️</div>
         <h3 style="color: #f3f4f6; margin-bottom: 4px; font-size: 1rem;">Are you sure?</h3>
-        <p style="color: #9ca3af; font-size: 0.8rem;" id="deleteConfirmMsg">Are you sure you want to delete this item? This action cannot be undone.</p>
+        <p style="color: #9ca3af; font-size: 0.85rem;" id="deleteConfirmMsg">Are you sure you want to delete this item?</p>
         <div class="modal-actions" style="justify-content: center; margin-top: 14px;">
             <button class="btn-secondary" onclick="closeDeleteModal()">Cancel</button>
             <button class="btn-danger" id="confirmDeleteBtn">Yes, Delete</button>
@@ -673,12 +793,12 @@ select.form-control option {
 
 <script>
 const defaultCards = [
-    { id: 1, subject: 'physics', chapter: 'Modern Physics', question: 'De Broglie Wavelength of Electron', answer: 'λ = 12.27 / √V Å', image: '', lastRevisedDate: null, saveForLater: false },
+    { id: 1, subject: 'physics', chapter: 'Vectors & Calculus', question: 'Dot Product Formula', answer: 'A · B = |A||B| cos(θ)', image: '', lastRevisedDate: null, saveForLater: false },
     { id: 2, subject: 'chemistry', chapter: 'Organic Chemistry', question: 'Reimer-Tiemann Reaction', answer: 'Phenol + CHCl3 + KOH -> Salicylaldehyde', image: '', lastRevisedDate: '2026-07-24', saveForLater: true },
-    { id: 3, subject: 'maths', chapter: 'Basic Maths', question: 'Logarithm Identity', answer: 'log(a * b) = log(a) + log(b)', image: '', lastRevisedDate: null, saveForLater: false }
+    { id: 3, subject: 'maths', chapter: 'Vectors & Calculus', question: 'Integration by Parts', answer: '∫ u dv = uv - ∫ v du', image: '', lastRevisedDate: null, saveForLater: false }
 ];
 
-let cards = JSON.parse(localStorage.getItem('jee_cards_v8')) || defaultCards;
+let cards = JSON.parse(localStorage.getItem('jee_cards_v10')) || defaultCards;
 let currentView = 'subject'; 
 let selectedSubject = null;
 let selectedChapter = null;
@@ -705,6 +825,40 @@ function updateStats() {
     const today = getTodayDateString();
     const revisedTodayCount = cards.filter(c => c.lastRevisedDate === today).length;
     document.getElementById('statRevisedToday').innerText = revisedTodayCount;
+}
+
+/* AUTOCOMPLETE SUGGESTIONS FOR CHAPTER INPUT */
+function handleChapterInput() {
+    const inputVal = document.getElementById('inputChapter').value.trim().toLowerCase();
+    const currentSub = document.getElementById('inputSubject').value;
+    const box = document.getElementById('chapterSuggestions');
+
+    if (!inputVal) {
+        box.style.display = 'none';
+        return;
+    }
+
+    const filteredCards = cards.filter(c => c.subject === currentSub);
+    const existingChapters = [...new Set(filteredCards.map(c => c.chapter))];
+
+    const matches = existingChapters.filter(ch => ch.toLowerCase().includes(inputVal));
+
+    if (matches.length > 0) {
+        box.innerHTML = matches.map(ch => `<div class="suggestion-item" onclick="selectSuggestion('${ch}')">${ch}</div>`).join('');
+        box.style.display = 'block';
+    } else {
+        box.style.display = 'none';
+    }
+}
+
+function selectSuggestion(chapName) {
+    document.getElementById('inputChapter').value = chapName;
+    document.getElementById('chapterSuggestions').style.display = 'none';
+}
+
+function handleSubjectChange() {
+    document.getElementById('inputChapter').value = '';
+    document.getElementById('chapterSuggestions').style.display = 'none';
 }
 
 function selectSubject(sub) {
@@ -1052,13 +1206,18 @@ function attachLongPressToElements(selector, callback) {
     });
 }
 
-function saveCards() { localStorage.setItem('jee_cards_v8', JSON.stringify(cards)); }
+function saveCards() { localStorage.setItem('jee_cards_v10', JSON.stringify(cards)); }
 
-function openModal() { document.getElementById('cardModal').style.display = 'flex'; }
+function openModal() { 
+    if(selectedSubject) document.getElementById('inputSubject').value = selectedSubject;
+    document.getElementById('cardModal').style.display = 'flex'; 
+}
+
 function closeModal() { 
     document.getElementById('cardModal').style.display = 'none'; 
     document.getElementById('addCardForm').reset();
     document.getElementById('editCardId').value = "";
+    document.getElementById('chapterSuggestions').style.display = 'none';
     document.getElementById('modalHeading').innerText = "Add New Flashcard";
 }
 
