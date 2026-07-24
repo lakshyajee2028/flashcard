@@ -1077,6 +1077,7 @@
         .form-control::placeholder {
             color: var(--text-muted);
         }
+
         textarea.form-control {
             resize: vertical;
             min-height: 60px;
@@ -1146,980 +1147,792 @@
             background: var(--border-light);
             color: var(--text-primary);
         }
-        .btn-danger {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #0099ff);
             border: none;
             color: #fff;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 10px;
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 210, 255, 0.20);
             transition: all 0.20s ease;
         }
-        .btn-danger:active {
-            transform: scale(0.94);
-        }
-
-        .btn-primary-full {
-            background: linear-gradient(135deg, var(--accent-purple), #7b2cbf);
-            border: none;
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 16px rgba(157, 78, 221, 0.20);
-        }
-        .btn-primary-full:active {
-            transform: scale(0.96);
-        }
-
-        .delete-icon-big {
-            font-size: 2.4rem;
-            color: #ef4444;
-            margin-bottom: 4px;
-            display: block;
-        }
-        .delete-confirm-text {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            text-align: center;
-            transition: color 0.3s;
-        }
-
-        /* ─── RESPONSIVE TWEAKS ─── */
-        @media (max-width: 420px) {
-            .app {
-                padding: 8px 10px;
-            }
-            .app-header h1 {
-                font-size: 1.1rem;
-            }
-            .site-link {
-                font-size: 0.62rem;
-                padding: 4px 10px;
-            }
-            .theme-toggle {
-                font-size: 0.72rem;
-                padding: 4px 10px;
-            }
-            .subject-card {
-                padding: 14px 8px;
-            }
-            .subject-card i {
-                font-size: 1.6rem;
-            }
-            .subject-card h2 {
-                font-size: 0.85rem;
-            }
-            .chapter-btn {
-                font-size: 0.75rem;
-                padding: 10px 8px;
-                min-height: 44px;
-            }
-            .card-face {
-                padding: 14px 16px;
-            }
-            .card-question {
-                font-size: 0.98rem;
-            }
-            .card-answer {
-                font-size: 0.92rem;
-            }
-            .card-body-content {
-                max-height: 150px;
-            }
-            .card-img {
-                max-height: 75px;
-            }
-            .action-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 1.0rem;
-            }
-            .deck-nav .nav-btn {
-                padding: 6px 14px;
-                font-size: 0.72rem;
-            }
-            .modal-box {
-                padding: 16px 18px;
-            }
-            .hero-emoji {
-                width: 36px;
-                height: 36px;
-                min-width: 36px;
-                font-size: 1.1rem;
-            }
-            .hero-text .title {
-                font-size: 0.78rem;
-            }
-            .hero-text .sub {
-                font-size: 0.62rem;
-            }
-            .stats-strip {
-                font-size: 0.65rem;
-                padding: 4px 10px;
-            }
-            .nav-bar {
-                padding: 6px 10px;
-            }
-            .btn-add {
-                font-size: 0.70rem;
-                padding: 4px 12px;
-            }
-            .back-btn {
-                font-size: 0.70rem;
-                padding: 4px 10px;
-            }
-            #navTitle {
-                font-size: 0.78rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .flashcard {
-                height: clamp(180px, 28vh, 230px);
-            }
-            .card-body-content {
-                max-height: 120px;
-            }
-            .card-question {
-                font-size: 0.85rem;
-            }
-            .card-answer {
-                font-size: 0.80rem;
-            }
-            .card-img {
-                max-height: 60px;
-            }
-            .action-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 0.85rem;
-            }
-            .deck-nav .nav-btn {
-                padding: 4px 10px;
-                font-size: 0.65rem;
-            }
-        }
-
-        @media (min-width: 768px) and (max-height: 700px) {
-            .flashcard {
-                height: clamp(220px, 36vh, 280px);
-            }
-            .subject-card {
-                padding: 14px 10px;
-            }
-            .subject-card i {
-                font-size: 1.6rem;
-            }
-        }
-
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-medium);
-            border-radius: 10px;
+        .btn-primary:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
-    <!-- AMBIENT GLOW -->
     <div class="glow-orb glow-orb--1"></div>
     <div class="glow-orb glow-orb--2"></div>
     <div class="glow-orb glow-orb--3"></div>
 
-    <!-- ─── APP ─── -->
-    <div class="app" id="app">
-
-        <!-- HEADER -->
+    <div class="app">
         <header class="app-header">
-            <h1><span class="brand-icon">⚡</span> JEE FlashRecall 3D</h1>
+            <h1><i class="fa-solid fa-layer-group brand-icon"></i>FlashRecall</h1>
             <div class="header-actions">
-                <button class="theme-toggle" id="themeToggle" title="Toggle theme" onclick="toggleTheme()">
-                    <i class="fa-solid fa-moon"></i> <span id="themeLabel">Dark</span>
+                <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()">
+                    <i class="fa-solid fa-sun" id="themeIcon"></i>
+                    <span id="themeLabel">Light</span>
                 </button>
                 <a href="https://Priyanshusingh.pages.dev" target="_blank" class="site-link">
-                    <i class="fa-solid fa-globe"></i> Visit
+                    <i class="fa-solid fa-globe"></i> Visit Site
                 </a>
             </div>
         </header>
 
-        <!-- NAV BAR -->
-        <nav class="nav-bar">
-            <button class="back-btn" id="backBtn" onclick="goBack()">
-                <i class="fa-solid fa-arrow-left"></i> Back
+        <div class="nav-bar">
+            <button class="back-btn" id="backBtn" onclick="handleBack()">
+                <i class="fa-solid fa-chevron-left"></i> Back
             </button>
-            <span id="navTitle">Select Subject</span>
-            <button class="btn-add" onclick="openModal()">
+            <div id="navTitle">Subjects</div>
+            <button class="btn-add" onclick="openAddModal()">
                 <i class="fa-solid fa-plus"></i> Add Card
             </button>
-        </nav>
-
-        <!-- STATS -->
-        <div class="stats-strip">
-            <span class="stat-item"><i class="fa-solid fa-layer-group" style="color:var(--accent-blue);"></i> Total: <b id="statTotalCards">0</b></span>
-            <span class="stat-item"><i class="fa-solid fa-circle-check" style="color:var(--accent-green);"></i> Revised Today: <b id="statRevisedToday">0</b></span>
-            <span class="stat-item"><i class="fa-regular fa-bookmark" style="color:var(--accent-purple);"></i> Saved: <b id="statSavedLater">0</b></span>
         </div>
 
-        <!-- HERO BANNER -->
-        <div class="hero-banner">
-            <div class="hero-emoji">📒</div>
-            <div class="hero-text">
-                <div class="title">Smart Flashcards <span>⚡</span></div>
-                <div class="sub">Revise formulas, equations &amp; concepts effortlessly</div>
+        <div class="stats-strip">
+            <div class="stat-item">
+                <i class="fa-solid fa-cards-blank" style="color:var(--accent-blue)"></i>
+                Total: <b id="statTotal">0</b>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-clock-rotate-left" style="color:var(--accent-purple)"></i>
+                Saved: <b id="statSaved">0</b>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-fire" style="color:var(--accent-amber)"></i>
+                Today: <b id="statToday">0</b>
             </div>
         </div>
 
-        <!-- SUBJECT VIEW -->
-        <div id="subjectView" class="subject-grid">
-            <div class="subject-card physics" onclick="selectSubject('physics')">
+        <div class="hero-banner" id="heroBanner">
+            <div class="hero-emoji">🚀</div>
+            <div class="hero-text">
+                <div class="title">Master <span>JEE Concepts</span> Fast</div>
+                <div class="sub">3D Flashcards with Smart Recall Tracking</div>
+            </div>
+        </div>
+
+        <div class="subject-grid" id="subjectView">
+            <div class="subject-card physics" onclick="selectSubject('Physics')">
                 <i class="fa-solid fa-atom"></i>
                 <h2>Physics</h2>
                 <span class="card-badge" id="badgePhysics">0 cards</span>
             </div>
-            <div class="subject-card chemistry" onclick="selectSubject('chemistry')">
-                <i class="fa-solid fa-flask"></i>
+            <div class="subject-card chemistry" onclick="selectSubject('Chemistry')">
+                <i class="fa-solid fa-flask-vial"></i>
                 <h2>Chemistry</h2>
                 <span class="card-badge" id="badgeChemistry">0 cards</span>
             </div>
-            <div class="subject-card maths" onclick="selectSubject('maths')">
+            <div class="subject-card maths" onclick="selectSubject('Mathematics')">
                 <i class="fa-solid fa-square-root-variable"></i>
-                <h2>Maths</h2>
+                <h2>Mathematics</h2>
                 <span class="card-badge" id="badgeMaths">0 cards</span>
             </div>
-            <div class="subject-card later" onclick="selectRevisionLaterView()">
+            <div class="subject-card later" onclick="openRevisionLater()">
                 <i class="fa-solid fa-bookmark"></i>
-                <h2>Revision Later</h2>
-                <span class="card-badge" id="badgeLater">0 saved</span>
+                <h2>Save for Later</h2>
+                <span class="card-badge" id="badgeLater">0 cards</span>
             </div>
         </div>
 
-        <!-- CHAPTER VIEW -->
-        <div id="chapterView" class="chapter-grid" style="display:none;"></div>
+        <div class="chapter-grid" id="chapterView" style="display:none;"></div>
 
-        <!-- DECK VIEW -->
         <div id="deckView" style="display:none;">
             <div class="flashcard-wrapper">
                 <div class="flashcard" id="flashcard" onclick="flipCard()">
-                    <!-- FRONT -->
                     <div class="card-face card-front">
                         <div class="card-header-tag">
-                            <span class="card-subject-badge" id="cardSubjectBadge">Physics • Chapter</span>
-                            <span class="time-tag tag-neutral" id="timeTag">
-                                <i class="fa-regular fa-clock"></i> Never
+                            <span class="card-subject-badge" id="cardSubjectFront">Subject</span>
+                            <span class="time-tag tag-neutral" id="timeTagFront">
+                                <i class="fa-regular fa-clock"></i> Not revised
                             </span>
                         </div>
                         <div class="card-body-content">
-                            <div class="card-question" id="cardQuestion">Question</div>
-                            <img id="cardFrontImg" class="card-img" style="display:none;" alt="card illustration" />
+                            <div class="card-question" id="cardQuestion">Question text...</div>
+                            <img id="cardImgFront" class="card-img" style="display:none;" alt="Question Attachment" />
                         </div>
-                        <div class="card-flip-hint"><i class="fa-solid fa-rotate"></i> Tap to flip · hold for options</div>
+                        <div class="card-flip-hint">
+                            <i class="fa-solid fa-rotate"></i> Tap card to show answer
+                        </div>
                     </div>
 
-                    <!-- BACK -->
                     <div class="card-face card-back">
                         <div class="card-header-tag">
-                            <span style="font-size:0.68rem; color:var(--accent-purple); font-weight:600; letter-spacing:0.3px;">✧ Solution / Answer</span>
+                            <span class="card-subject-badge" id="cardSubjectBack">Answer</span>
+                            <span class="time-tag tag-neutral" id="timeTagBack">
+                                <i class="fa-regular fa-clock"></i> Not revised
+                            </span>
                         </div>
                         <div class="card-body-content">
-                            <div class="card-answer" id="cardAnswer">Answer</div>
-                            <img id="cardBackImg" class="card-img" style="display:none;" alt="answer illustration" />
+                            <div class="card-answer" id="cardAnswer">Answer text...</div>
+                            <img id="cardImgBack" class="card-img" style="display:none;" alt="Answer Attachment" />
                         </div>
-                        <div class="card-flip-hint"><i class="fa-solid fa-rotate"></i> Tap to flip back</div>
+                        <div class="card-flip-hint">
+                            <i class="fa-solid fa-rotate"></i> Tap card to show question
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ACTION BAR -->
             <div class="action-bar">
-                <button class="action-btn revision-btn" id="circleBtn" onclick="toggleRevision()" title="Mark Revised Today">
+                <button class="action-btn revision-btn" id="revisedToggleBtn" onclick="toggleRevised(event)" title="Mark as Revised Today">
                     <i class="fa-solid fa-check"></i>
                 </button>
-                <button class="action-btn later-btn" id="laterBtn" onclick="toggleSaveForLater()" title="Save for Revision Later">
+                <button class="action-btn later-btn" id="saveLaterBtn" onclick="toggleSaveForLater(event)" title="Save for Later">
                     <i class="fa-solid fa-bookmark"></i>
                 </button>
             </div>
 
-            <!-- DECK NAV -->
             <div class="deck-nav">
-                <button class="nav-btn" onclick="prevCard()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                <button class="nav-btn" onclick="prevCard()">
+                    <i class="fa-solid fa-chevron-left"></i> Prev
+                </button>
                 <span class="counter" id="cardCounter">0 / 0</span>
-                <button class="nav-btn" onclick="nextCard()">Next <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="nav-btn" onclick="nextCard()">
+                    Next <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
 
-        <!-- FOOTER -->
-        <footer class="app-footer" id="appFooter">
-            Crafted with ❤️ by <a href="https://Priyanshusingh.pages.dev" target="_blank">Priyanshu Singh</a>
+        <footer class="app-footer">
+            Built by <a href="https://Priyanshusingh.pages.dev" target="_blank">PRIYANSHU SINGH</a>
         </footer>
     </div>
 
-    <!-- ─── CONTEXT MENU ─── -->
     <div class="context-menu" id="contextMenu">
-        <div class="context-menu-item" onclick="handleMenuEdit()">
-            <i class="fa-solid fa-pen-to-square"></i> Edit
+        <div class="context-menu-item" onclick="editCardFromContext()">
+            <i class="fa-solid fa-pen-to-square"></i> Edit Card
         </div>
-        <div class="context-menu-item delete" onclick="handleMenuDelete()">
-            <i class="fa-solid fa-trash-can"></i> Delete
+        <div class="context-menu-item delete" onclick="deleteCardFromContext()">
+            <i class="fa-solid fa-trash-can"></i> Delete Card
         </div>
     </div>
 
-    <!-- ─── MODAL: ADD/EDIT CARD ─── -->
     <div class="modal-overlay" id="cardModal">
         <div class="modal-box">
             <div class="modal-head">
-                <h3 id="modalHeading">Add New Flashcard</h3>
-                <span class="modal-close" onclick="closeModal()">&times;</span>
+                <h3 id="modalTitle">Add New Flashcard</h3>
+                <div class="modal-close" onclick="closeModal()">&times;</div>
             </div>
-            <form id="addCardForm" onsubmit="saveCustomCard(event)">
-                <input type="hidden" id="editCardId" value="" />
-                <div class="form-group">
-                    <label>Subject</label>
-                    <select class="form-control" id="inputSubject" required onchange="handleSubjectChange()">
-                        <option value="physics">Physics</option>
-                        <option value="chemistry">Chemistry</option>
-                        <option value="maths">Maths</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Chapter Name</label>
-                    <input type="text" class="form-control" id="inputChapter" placeholder="e.g. Vectors &amp; Calculus" autocomplete="off" required oninput="handleChapterInput()" />
-                    <div class="suggestions-box" id="chapterSuggestions"></div>
-                </div>
-                <div class="form-group">
-                    <label>Question / Title</label>
-                    <input type="text" class="form-control" id="inputQuestion" placeholder="e.g. Dot Product Formula" required />
-                </div>
-                <div class="form-group">
-                    <label>Answer / Formula</label>
-                    <textarea class="form-control" id="inputAnswer" rows="2" placeholder="e.g. A · B = |A||B| cos(θ)"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Attach Image <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
-                    <input type="file" class="form-control" id="inputImage" accept="image/*" />
-                </div>
-                <button type="submit" class="btn-primary-full">Save Card</button>
-            </form>
-        </div>
-    </div>
 
-    <!-- ─── MODAL: RENAME CHAPTER ─── -->
-    <div class="modal-overlay" id="renameModal">
-        <div class="modal-box">
-            <div class="modal-head">
-                <h3 style="color:var(--accent-amber);">Rename Chapter</h3>
-                <span class="modal-close" onclick="closeRenameModal()">&times;</span>
-            </div>
             <div class="form-group">
-                <label>New Chapter Name</label>
-                <input type="text" class="form-control" id="renameInput" placeholder="Enter new name..." />
+                <label>Subject</label>
+                <select id="modalSubject" class="form-control" onchange="updateChapterSuggestions()">
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Mathematics">Mathematics</option>
+                </select>
             </div>
+
+            <div class="form-group">
+                <label>Chapter Name</label>
+                <input type="text" id="modalChapter" class="form-control" placeholder="e.g. Rotation, Thermodynamics" autocomplete="off" oninput="showChapterSuggestions()" />
+                <div class="suggestions-box" id="suggestionsBox"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Question</label>
+                <textarea id="modalQuestion" class="form-control" placeholder="Type the question or concept..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Answer</label>
+                <textarea id="modalAnswer" class="form-control" placeholder="Type the solution or answer..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Image (Optional)</label>
+                <input type="file" id="modalImage" class="form-control" accept="image/*" />
+            </div>
+
             <div class="modal-actions">
-                <button class="btn-secondary" onclick="closeRenameModal()">Cancel</button>
-                <button class="btn-primary-full" style="width:auto; padding:6px 20px;" onclick="submitRenameChapter()">Save</button>
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveCard()">Save Card</button>
             </div>
         </div>
     </div>
 
-    <!-- ─── MODAL: DELETE CONFIRM ─── -->
-    <div class="modal-overlay" id="deleteConfirmModal">
-        <div class="modal-box" style="text-align:center;">
-            <span class="delete-icon-big">⚠️</span>
-            <h3 style="color:var(--text-primary); margin-bottom:2px; font-size:0.95rem;">Are you sure?</h3>
-            <p class="delete-confirm-text" id="deleteConfirmMsg">This action cannot be undone.</p>
-            <div class="modal-actions" style="justify-content:center; margin-top:14px;">
-                <button class="btn-secondary" onclick="closeDeleteModal()">Cancel</button>
-                <button class="btn-danger" id="confirmDeleteBtn">Yes, Delete</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ─── SCRIPT ─── -->
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  DATA
+        //  DATA INITIALIZATION & STORAGE
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        const defaultCards = [
-            { id: 1, subject: 'physics', chapter: 'Vectors & Calculus', question: 'Dot Product Formula',
-                answer: 'A · B = |A||B| cos(θ)', image: '', lastRevisedDate: null, saveForLater: false },
-            { id: 2, subject: 'chemistry', chapter: 'Organic Chemistry', question: 'Reimer-Tiemann Reaction',
-                answer: 'Phenol + CHCl₃ + KOH → Salicylaldehyde', image: '', lastRevisedDate: '2026-07-24',
-            saveForLater: true },
-            { id: 3, subject: 'maths', chapter: 'Vectors & Calculus', question: 'Integration by Parts',
-                answer: '∫ u dv = uv − ∫ v du', image: '', lastRevisedDate: null, saveForLater: false }
+        const STORAGE_KEY = 'jee_flashrecall_cards_v2';
+
+        const DEFAULT_CARDS = [
+            {
+                id: 1,
+                subject: 'Physics',
+                chapter: 'Rotational Motion',
+                question: 'What is the Moment of Inertia of a uniform solid sphere about its diameter?',
+                answer: 'I = (2/5) M R²',
+                image: null,
+                lastRevisedDate: null,
+                saveForLater: false
+            },
+            {
+                id: 2,
+                subject: 'Physics',
+                chapter: 'Thermodynamics',
+                question: 'What is the Efficiency (η) of a Carnot Engine?',
+                answer: 'η = 1 - (T₂ / T₁), where T₁ is Source Temp and T₂ is Sink Temp (in Kelvin).',
+                image: null,
+                lastRevisedDate: null,
+                saveForLater: false
+            },
+            {
+                id: 3,
+                subject: 'Chemistry',
+                chapter: 'Chemical Bonding',
+                question: 'What is the hybridization and shape of SF₆?',
+                answer: 'Hybridization: sp³d² | Shape: Octahedral',
+                image: null,
+                lastRevisedDate: null,
+                saveForLater: false
+            },
+            {
+                id: 4,
+                subject: 'Chemistry',
+                chapter: 'Organic Chemistry',
+                question: 'What is the major product of Reimer-Tiemann Reaction?',
+                answer: 'Salicylaldehyde (2-hydroxybenzaldehyde) from Phenol using CHCl₃ + KOH.',
+                image: null,
+                lastRevisedDate: null,
+                saveForLater: false
+            },
+            {
+                id: 5,
+                subject: 'Mathematics',
+                chapter: 'Calculus',
+                question: 'What is ∫ eᵃˣ sin(bx) dx?',
+                answer: '[ eᵃˣ / (a² + b²) ] * [ a sin(bx) - b cos(bx) ] + C',
+                image: null,
+                lastRevisedDate: null,
+                saveForLater: false
+            },
+            {
+                id: 6,
+                subject: 'Mathematics',
+                chapter: 'Matrices & Determinants',
+                question: 'Property of Adjoint: What is det(adj A) for an n × n matrix A?',
+                answer: '|adj A| = |A|ⁿ⁻¹',
+                image: null,
+                lastRevisedDate: null,
+                saveForLater: false
+            }
         ];
 
         let cards = [];
-        try {
-            const stored = localStorage.getItem('jee_cards_v10');
-            if (stored) {
-                const parsed = JSON.parse(stored);
-                if (Array.isArray(parsed) && parsed.length) cards = parsed;
-                else cards = defaultCards;
-            } else {
-                cards = defaultCards;
-            }
-        } catch (_) { cards = defaultCards; }
-
-        cards.forEach(c => { if (!c.id) c.id = Date.now() + Math.random(); });
-
-        let currentView = 'subject';
-        let selectedSubject = null;
-        let selectedChapter = null;
-        let isRevisionLaterMode = false;
+        let currentView = 'subject'; 
+        let selectedSubject = '';
+        let selectedChapter = '';
         let currentDeck = [];
-        let currentIndex = 0;
+        let currentCardIndex = 0;
+        let editingCardId = null;
+        let isRevisionLaterMode = false;
 
-        let contextTargetType = null;
-        let contextTargetData = null;
+        function loadCards() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                try {
+                    cards = JSON.parse(raw);
+                } catch (e) {
+                    cards = DEFAULT_CARDS;
+                }
+            } else {
+                cards = DEFAULT_CARDS;
+                saveCards();
+            }
+        }
+
+        function saveCards() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+            updateGlobalStats();
+        }
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         //  THEME TOGGLE
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function getPreferredTheme() {
-            return localStorage.getItem('jee_theme') || 'dark';
-        }
-
-        function setTheme(theme) {
-            const body = document.body;
-            if (theme === 'light') {
-                body.classList.add('theme-light');
-                document.getElementById('themeLabel').innerText = 'Light';
-                document.querySelector('#themeToggle i').className = 'fa-solid fa-sun';
-            } else {
-                body.classList.remove('theme-light');
-                document.getElementById('themeLabel').innerText = 'Dark';
-                document.querySelector('#themeToggle i').className = 'fa-solid fa-moon';
-            }
-            localStorage.setItem('jee_theme', theme);
-        }
-
         function toggleTheme() {
-            const current = document.body.classList.contains('theme-light') ? 'light' : 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            setTheme(next);
+            const isLight = document.body.classList.toggle('theme-light');
+            document.getElementById('themeIcon').className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+            document.getElementById('themeLabel').innerText = isLight ? 'Dark' : 'Light';
+            localStorage.setItem('jee_flashrecall_theme', isLight ? 'light' : 'dark');
         }
 
-        // Initialize theme
-        const initialTheme = getPreferredTheme();
-        setTheme(initialTheme);
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  HELPERS
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function getTodayDateString() { return new Date().toISOString().split('T')[0]; }
-
-        function getDaysDifference(dateStr) {
-            if (!dateStr) return null;
-            const today = new Date(getTodayDateString());
-            const revised = new Date(dateStr);
-            const diff = Math.floor((today - revised) / (1000 * 60 * 60 * 24));
-            return diff < 0 ? 0 : diff;
-        }
-
-        function saveCards() {
-            localStorage.setItem('jee_cards_v10', JSON.stringify(cards));
-            updateStatsAndBadges();
-        }
-
-        window.addEventListener('beforeunload', () => saveCards());
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  STATS & BADGES
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function updateStatsAndBadges() {
-            const total = cards.length;
-            document.getElementById('statTotalCards').innerText = total;
-
-            const today = getTodayDateString();
-            const revisedToday = cards.filter(c => c.lastRevisedDate === today).length;
-            document.getElementById('statRevisedToday').innerText = revisedToday;
-
-            const saved = cards.filter(c => c.saveForLater).length;
-            document.getElementById('statSavedLater').innerText = saved;
-
-            ['physics', 'chemistry', 'maths'].forEach(sub => {
-                const count = cards.filter(c => c.subject === sub).length;
-                const el = document.getElementById('badge' + sub.charAt(0).toUpperCase() + sub.slice(1));
-                if (el) el.innerText = count + ' card' + (count !== 1 ? 's' : '');
-            });
-            const laterCount = cards.filter(c => c.saveForLater).length;
-            const laterEl = document.getElementById('badgeLater');
-            if (laterEl) laterEl.innerText = laterCount + ' saved';
-        }
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  AUTOCOMPLETE
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function handleChapterInput() {
-            const val = document.getElementById('inputChapter').value.trim().toLowerCase();
-            const sub = document.getElementById('inputSubject').value;
-            const box = document.getElementById('chapterSuggestions');
-            if (!val) { box.style.display = 'none'; return; }
-
-            const existing = [...new Set(cards.filter(c => c.subject === sub).map(c => c.chapter))];
-            const matches = existing.filter(ch => ch.toLowerCase().includes(val));
-            if (matches.length) {
-                box.innerHTML = matches.map(ch =>
-                    `<div class="suggestion-item" onclick="selectSuggestion('${ch.replace(/'/g, "\\'")}')">${ch}</div>`
-                ).join('');
-                box.style.display = 'block';
-            } else {
-                box.style.display = 'none';
+        function initTheme() {
+            const savedTheme = localStorage.getItem('jee_flashrecall_theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('theme-light');
+                document.getElementById('themeIcon').className = 'fa-solid fa-moon';
+                document.getElementById('themeLabel').innerText = 'Dark';
             }
         }
 
-        function selectSuggestion(chapName) {
-            document.getElementById('inputChapter').value = chapName;
-            document.getElementById('chapterSuggestions').style.display = 'none';
-        }
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  GLOBAL STATS & BADGES
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function updateGlobalStats() {
+            const todayStr = new Date().toISOString().split('T')[0];
 
-        function handleSubjectChange() {
-            document.getElementById('inputChapter').value = '';
-            document.getElementById('chapterSuggestions').style.display = 'none';
+            const total = cards.length;
+            const saved = cards.filter(c => c.saveForLater).length;
+            const todayCount = cards.filter(c => c.lastRevisedDate === todayStr).length;
+
+            document.getElementById('statTotal').innerText = total;
+            document.getElementById('statSaved').innerText = saved;
+            document.getElementById('statToday').innerText = todayCount;
+
+            const phys = cards.filter(c => c.subject === 'Physics').length;
+            const chem = cards.filter(c => c.subject === 'Chemistry').length;
+            const math = cards.filter(c => c.subject === 'Mathematics').length;
+
+            document.getElementById('badgePhysics').innerText = `${phys} card${phys !== 1 ? 's' : ''}`;
+            document.getElementById('badgeChemistry').innerText = `${chem} card${chem !== 1 ? 's' : ''}`;
+            document.getElementById('badgeMaths').innerText = `${math} card${math !== 1 ? 's' : ''}`;
+            document.getElementById('badgeLater').innerText = `${saved} card${saved !== 1 ? 's' : ''}`;
         }
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  NAVIGATION
+        //  VIEW NAVIGATION
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function selectSubject(sub) {
-            selectedSubject = sub;
+        function renderSubjectView() {
+            currentView = 'subject';
             isRevisionLaterMode = false;
-            currentView = 'chapter';
+            document.getElementById('subjectView').style.display = 'grid';
+            document.getElementById('heroBanner').style.display = 'flex';
+            document.getElementById('chapterView').style.display = 'none';
+            document.getElementById('deckView').style.display = 'none';
+            document.getElementById('backBtn').style.display = 'none';
+            document.getElementById('navTitle').innerText = 'Subjects';
+            updateGlobalStats();
+        }
+
+        function selectSubject(subjectName) {
+            selectedSubject = subjectName;
             renderChapterView();
         }
 
-        function selectRevisionLaterView() {
-            isRevisionLaterMode = true;
+        function renderChapterView() {
             currentView = 'chapter';
-            renderRevisionLaterSubCategories();
+            isRevisionLaterMode = false;
+            document.getElementById('subjectView').style.display = 'none';
+            document.getElementById('heroBanner').style.display = 'none';
+            document.getElementById('chapterView').style.display = 'grid';
+            document.getElementById('deckView').style.display = 'none';
+            document.getElementById('backBtn').style.display = 'inline-flex';
+            document.getElementById('navTitle').innerText = selectedSubject;
+
+            const chMap = {};
+            cards.filter(c => c.subject === selectedSubject).forEach(c => {
+                chMap[c.chapter] = (chMap[c.chapter] || 0) + 1;
+            });
+
+            const grid = document.getElementById('chapterView');
+            grid.innerHTML = '';
+
+            const chapters = Object.keys(chMap);
+            if (chapters.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align:center; padding: 40px; color: var(--text-muted);">
+                        <i class="fa-solid fa-folder-open" style="font-size:2.5rem; margin-bottom:10px; display:block; opacity:0.5;"></i>
+                        No chapters yet in ${selectedSubject}.<br>Click "+ Add Card" to create one!
+                    </div>
+                `;
+                return;
+            }
+
+            chapters.forEach(ch => {
+                const btn = document.createElement('button');
+                btn.className = 'chapter-btn';
+                btn.onclick = () => openDeck(selectedSubject, ch);
+                btn.innerHTML = `
+                    <span><i class="fa-regular fa-folder"></i> ${ch}</span>
+                    <span class="ch-count">${chMap[ch]}</span>
+                `;
+                grid.appendChild(btn);
+            });
         }
 
-        function selectChapter(chap) {
+        function openDeck(subj, chap) {
+            selectedSubject = subj;
             selectedChapter = chap;
-            currentView = 'deck';
-            currentDeck = cards.filter(c => c.subject === selectedSubject && c.chapter === selectedChapter);
-            currentIndex = 0;
+            isRevisionLaterMode = false;
+
+            currentDeck = cards.filter(c => c.subject === subj && c.chapter === chap);
+            currentCardIndex = 0;
             renderDeckView();
         }
 
-        function selectRevisionLaterSubjectDeck(sub) {
-            selectedSubject = sub;
-            currentView = 'deck';
-            currentDeck = cards.filter(c => c.saveForLater && (sub === 'all' || c.subject === sub));
-            currentIndex = 0;
+        function openRevisionLater() {
+            isRevisionLaterMode = true;
+            currentDeck = cards.filter(c => c.saveForLater);
+            currentCardIndex = 0;
+
+            if (currentDeck.length === 0) {
+                alert('No cards saved for later!');
+                return;
+            }
+
             renderDeckView();
         }
 
-        function goBack() {
+        function renderDeckView() {
+            currentView = 'deck';
+            document.getElementById('subjectView').style.display = 'none';
+            document.getElementById('heroBanner').style.display = 'none';
+            document.getElementById('chapterView').style.display = 'none';
+            document.getElementById('deckView').style.display = 'flex';
+            document.getElementById('backBtn').style.display = 'inline-flex';
+
+            if (isRevisionLaterMode) {
+                document.getElementById('navTitle').innerText = 'Save for Later';
+            } else {
+                document.getElementById('navTitle').innerText = `${selectedSubject} • ${selectedChapter}`;
+            }
+
+            renderCard();
+        }
+
+        function handleBack() {
             if (currentView === 'deck') {
-                currentView = 'chapter';
-                if (isRevisionLaterMode) renderRevisionLaterSubCategories();
-                else renderChapterView();
+                if (isRevisionLaterMode) {
+                    renderSubjectView();
+                } else {
+                    renderChapterView();
+                }
             } else if (currentView === 'chapter') {
-                currentView = 'subject';
                 renderSubjectView();
             }
         }
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  RENDER: SUBJECT
+        //  FLASHCARD INTERACTION & REVISION LOGIC
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function renderSubjectView() {
-            document.getElementById('subjectView').style.display = 'grid';
-            document.getElementById('chapterView').style.display = 'none';
-            document.getElementById('deckView').style.display = 'none';
-            document.getElementById('backBtn').style.display = 'none';
-            document.getElementById('navTitle').innerText = 'Select Subject';
-            document.getElementById('appFooter').style.display = 'block';
-            updateStatsAndBadges();
-        }
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  RENDER: CHAPTER
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function renderChapterView() {
-            document.getElementById('subjectView').style.display = 'none';
-            document.getElementById('chapterView').style.display = 'grid';
-            document.getElementById('deckView').style.display = 'none';
-            document.getElementById('backBtn').style.display = 'flex';
-            document.getElementById('navTitle').innerText = selectedSubject.toUpperCase() + ' · Chapters';
-            document.getElementById('appFooter').style.display = 'none';
-            updateStatsAndBadges();
-
-            const container = document.getElementById('chapterView');
-            const subCards = cards.filter(c => c.subject === selectedSubject);
-            const chapters = [...new Set(subCards.map(c => c.chapter))];
-
-            if (!chapters.length) {
-                container.innerHTML =
-                    `<p style="grid-column:1/-1; text-align:center; color:var(--text-muted); padding:24px 0; font-size:0.85rem;">No chapters yet. Click <strong style="color:var(--accent-blue);">Add Card</strong> to create one!</p>`;
-                return;
-            }
-
-            container.innerHTML = chapters.map(ch => {
-                const count = subCards.filter(c => c.chapter === ch).length;
-                return `<div class="chapter-btn" onclick="selectChapter('${ch.replace(/'/g, "\\'")}')" oncontextmenu="openContextMenu(event,'chapter','${ch.replace(/'/g, "\\'")}')">
-                            <i class="fa-solid fa-book-bookmark"></i>
-                            <span>${ch}</span>
-                            <span class="ch-count">${count}</span>
-                        </div>`;
-            }).join('');
-
-            attachLongPress('.chapter-btn', (e, el) => {
-                const span = el.querySelector('span');
-                const chapName = span ? span.innerText.trim() : el.innerText.trim();
-                openContextMenu(e, 'chapter', chapName);
-            });
-        }
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  RENDER: REVISION LATER CATEGORIES
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function renderRevisionLaterSubCategories() {
-            document.getElementById('subjectView').style.display = 'none';
-            document.getElementById('chapterView').style.display = 'grid';
-            document.getElementById('deckView').style.display = 'none';
-            document.getElementById('backBtn').style.display = 'flex';
-            document.getElementById('navTitle').innerText = '📌 Revision Later';
-            document.getElementById('appFooter').style.display = 'none';
-            updateStatsAndBadges();
-
-            const container = document.getElementById('chapterView');
-            const subs = ['physics', 'chemistry', 'maths'];
-            const icons = { physics: 'fa-atom', chemistry: 'fa-flask', maths: 'fa-square-root-variable' };
-            const colors = { physics: 'var(--accent-blue)', chemistry: 'var(--accent-pink)', maths: 'var(--accent-amber)' };
-
-            let html = subs.map(sub => {
-                const count = cards.filter(c => c.saveForLater && c.subject === sub).length;
-                return `<div class="chapter-btn" onclick="selectRevisionLaterSubjectDeck('${sub}')" style="border-color:${colors[sub]}40;">
-                            <i class="fa-solid ${icons[sub]}" style="color:${colors[sub]};"></i>
-                            <span>${sub.charAt(0).toUpperCase() + sub.slice(1)}</span>
-                            <span class="ch-count">${count}</span>
-                        </div>`;
-            }).join('');
-
-            const allCount = cards.filter(c => c.saveForLater).length;
-            html +=
-                `<div class="chapter-btn" onclick="selectRevisionLaterSubjectDeck('all')" style="border-color:var(--accent-purple)40;">
-                            <i class="fa-solid fa-layer-group" style="color:var(--accent-purple);"></i>
-                            <span>All Cards</span>
-                            <span class="ch-count">${allCount}</span>
-                        </div>`;
-
-            container.innerHTML = html;
-        }
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  RENDER: DECK
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function renderDeckView() {
-            document.getElementById('subjectView').style.display = 'none';
-            document.getElementById('chapterView').style.display = 'none';
-            document.getElementById('deckView').style.display = 'flex';
-            document.getElementById('backBtn').style.display = 'flex';
-            document.getElementById('navTitle').innerText = isRevisionLaterMode ? '📌 Saved Cards' : selectedChapter || 'Deck';
-            document.getElementById('appFooter').style.display = 'none';
-            updateStatsAndBadges();
-
-            renderCard();
-
-            const cardEl = document.getElementById('flashcard');
-            cardEl.oncontextmenu = (e) => {
-                if (currentDeck.length) openContextMenu(e, 'card', currentDeck[currentIndex]);
-                e.preventDefault();
-            };
-            attachLongPress('#flashcard', (e) => {
-                if (currentDeck.length) openContextMenu(e, 'card', currentDeck[currentIndex]);
-            });
-        }
-
         function renderCard() {
-            const card = document.getElementById('flashcard');
-            card.classList.remove('flipped');
+            const cardEl = document.getElementById('flashcard');
+            cardEl.classList.remove('flipped');
 
-            const total = currentDeck.length;
-            if (total === 0) {
-                document.getElementById('cardQuestion').innerText = '✨ No cards here yet!';
-                document.getElementById('cardAnswer').innerText = 'Add some cards to start revising.';
+            if (currentDeck.length === 0) {
+                document.getElementById('cardQuestion').innerText = 'No cards available in this deck.';
+                document.getElementById('cardAnswer').innerText = 'Add cards using the "+ Add Card" button.';
+                document.getElementById('cardSubjectFront').innerText = 'Empty';
+                document.getElementById('cardSubjectBack').innerText = 'Empty';
                 document.getElementById('cardCounter').innerText = '0 / 0';
-                document.getElementById('circleBtn').style.opacity = '0.3';
-                document.getElementById('laterBtn').style.opacity = '0.3';
-                document.getElementById('cardSubjectBadge').innerText = '—';
-                document.getElementById('timeTag').innerHTML = '<i class="fa-regular fa-clock"></i> —';
-                document.getElementById('timeTag').className = 'time-tag tag-neutral';
-                document.getElementById('cardFrontImg').style.display = 'none';
-                document.getElementById('cardBackImg').style.display = 'none';
+                document.getElementById('cardImgFront').style.display = 'none';
+                document.getElementById('cardImgBack').style.display = 'none';
                 return;
             }
 
-            document.getElementById('circleBtn').style.opacity = '1';
-            document.getElementById('laterBtn').style.opacity = '1';
+            if (currentCardIndex >= currentDeck.length) currentCardIndex = 0;
+            if (currentCardIndex < 0) currentCardIndex = currentDeck.length - 1;
 
-            const c = currentDeck[currentIndex];
-            document.getElementById('cardSubjectBadge').innerText = `${c.subject} • ${c.chapter}`;
+            const c = currentDeck[currentCardIndex];
+
+            document.getElementById('cardSubjectFront').innerText = c.subject + ' • ' + c.chapter;
+            document.getElementById('cardSubjectBack').innerText = c.subject + ' • ' + c.chapter;
+
             document.getElementById('cardQuestion').innerText = c.question;
             document.getElementById('cardAnswer').innerText = c.answer;
-            document.getElementById('cardCounter').innerText = `${currentIndex + 1} / ${total}`;
 
-            const fImg = document.getElementById('cardFrontImg');
-            const bImg = document.getElementById('cardBackImg');
+            const imgFront = document.getElementById('cardImgFront');
+            const imgBack = document.getElementById('cardImgBack');
             if (c.image) {
-                fImg.src = c.image;
-                fImg.style.display = 'block';
-                bImg.src = c.image;
-                bImg.style.display = 'block';
+                imgFront.src = c.image;
+                imgFront.style.display = 'block';
+                imgBack.src = c.image;
+                imgBack.style.display = 'block';
             } else {
-                fImg.style.display = 'none';
-                bImg.style.display = 'none';
+                imgFront.style.display = 'none';
+                imgBack.style.display = 'none';
             }
 
-            const days = getDaysDifference(c.lastRevisedDate);
-            const tag = document.getElementById('timeTag');
-            const circleBtn = document.getElementById('circleBtn');
-            const laterBtn = document.getElementById('laterBtn');
+            document.getElementById('cardCounter').innerText = `${currentCardIndex + 1} / ${currentDeck.length}`;
 
-            if (days === 0) {
-                tag.className = 'time-tag tag-green';
-                tag.innerHTML = `<i class="fa-solid fa-circle-check"></i> Today`;
-                circleBtn.className = 'action-btn revision-btn active';
-            } else if (days === 1) {
-                tag.className = 'time-tag tag-yellow';
-                tag.innerHTML = `<i class="fa-regular fa-clock"></i> 1d ago`;
-                circleBtn.className = 'action-btn revision-btn';
-            } else if (days !== null && days <= 3) {
-                tag.className = 'time-tag tag-yellow';
-                tag.innerHTML = `<i class="fa-regular fa-clock"></i> ${days}d ago`;
-                circleBtn.className = 'action-btn revision-btn';
-            } else if (days !== null && days > 3) {
-                tag.className = 'time-tag tag-red';
-                tag.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${days}d ago`;
-                circleBtn.className = 'action-btn revision-btn';
+            // TIME REVISED TAG & TODAY STATUS
+            const todayStr = new Date().toISOString().split('T')[0];
+            const isRevisedToday = c.lastRevisedDate === todayStr;
+
+            const timeTagFront = document.getElementById('timeTagFront');
+            const timeTagBack = document.getElementById('timeTagBack');
+            const revBtn = document.getElementById('revisedToggleBtn');
+
+            const tagText = getRelativeTimeText(c.lastRevisedDate);
+
+            timeTagFront.innerHTML = `<i class="fa-regular fa-clock"></i> ${tagText}`;
+            timeTagBack.innerHTML = `<i class="fa-regular fa-clock"></i> ${tagText}`;
+
+            if (isRevisedToday) {
+                timeTagFront.className = 'time-tag tag-green';
+                timeTagBack.className = 'time-tag tag-green';
+                revBtn.className = 'action-btn revision-btn active';
+                revBtn.title = 'Revised Today! Tap to unmark';
+            } else if (c.lastRevisedDate) {
+                timeTagFront.className = 'time-tag tag-yellow';
+                timeTagBack.className = 'time-tag tag-yellow';
+                revBtn.className = 'action-btn revision-btn';
+                revBtn.title = 'Mark as Revised Today';
             } else {
-                tag.className = 'time-tag tag-neutral';
-                tag.innerHTML = `<i class="fa-regular fa-clock"></i> Never`;
-                circleBtn.className = 'action-btn revision-btn';
+                timeTagFront.className = 'time-tag tag-neutral';
+                timeTagBack.className = 'time-tag tag-neutral';
+                revBtn.className = 'action-btn revision-btn';
+                revBtn.title = 'Mark as Revised Today';
             }
 
-            laterBtn.className = c.saveForLater ? 'action-btn later-btn saved' : 'action-btn later-btn';
+            // SAVE FOR LATER BUTTON
+            const laterBtn = document.getElementById('saveLaterBtn');
+            if (c.saveForLater) {
+                laterBtn.className = 'action-btn later-btn saved';
+                laterBtn.title = 'Saved for Later (Tap to remove)';
+            } else {
+                laterBtn.className = 'action-btn later-btn';
+                laterBtn.title = 'Save for Later';
+            }
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  FLIP & NAV
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function getRelativeTimeText(dateStr) {
+            if (!dateStr) return 'Not revised';
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const revDate = new Date(dateStr);
+            revDate.setHours(0, 0, 0, 0);
+
+            const diffTime = today - revDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) return 'Revised Today';
+            if (diffDays === 1) return 'Revised Yesterday';
+            if (diffDays < 30) return `Revised ${diffDays}d ago`;
+
+            const months = Math.floor(diffDays / 30);
+            return `Revised ${months}m ago`;
+        }
+
         function flipCard() {
-            if (currentDeck.length) {
-                document.getElementById('flashcard').classList.toggle('flipped');
-            }
-        }
-
-        function nextCard() {
-            if (!currentDeck.length) return;
-            currentIndex = (currentIndex + 1) % currentDeck.length;
-            renderCard();
+            document.getElementById('flashcard').classList.toggle('flipped');
         }
 
         function prevCard() {
-            if (!currentDeck.length) return;
-            currentIndex = (currentIndex - 1 + currentDeck.length) % currentDeck.length;
+            if (currentDeck.length === 0) return;
+            currentCardIndex = (currentCardIndex - 1 + currentDeck.length) % currentDeck.length;
             renderCard();
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  ACTIONS: REVISION / SAVE
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function toggleRevision() {
-            if (!currentDeck.length) return;
-            const card = currentDeck[currentIndex];
-            const idx = cards.findIndex(c => c.id === card.id);
-            if (idx === -1) return;
-
-            const today = getTodayDateString();
-            if (cards[idx].lastRevisedDate === today) {
-                cards[idx].lastRevisedDate = null;
-                currentDeck[currentIndex].lastRevisedDate = null;
-            } else {
-                cards[idx].lastRevisedDate = today;
-                currentDeck[currentIndex].lastRevisedDate = today;
-                cards[idx].saveForLater = false;
-                currentDeck[currentIndex].saveForLater = false;
-            }
-
-            saveCards();
-
-            if (isRevisionLaterMode && cards[idx].lastRevisedDate === today) {
-                currentDeck.splice(currentIndex, 1);
-                if (currentIndex >= currentDeck.length) currentIndex = Math.max(0, currentDeck.length - 1);
-            }
-
+        function nextCard() {
+            if (currentDeck.length === 0) return;
+            currentCardIndex = (currentCardIndex + 1) % currentDeck.length;
             renderCard();
         }
 
-        function toggleSaveForLater() {
-            if (!currentDeck.length) return;
-            const card = currentDeck[currentIndex];
-            const idx = cards.findIndex(c => c.id === card.id);
-            if (idx === -1) return;
-
-            cards[idx].saveForLater = !cards[idx].saveForLater;
-            currentDeck[currentIndex].saveForLater = cards[idx].saveForLater;
-            saveCards();
-            renderCard();
-        }
-
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  CONTEXT MENU
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function openContextMenu(e, type, data) {
-            e.preventDefault();
+        function toggleRevised(e) {
             e.stopPropagation();
-            contextTargetType = type;
-            contextTargetData = data;
-            const menu = document.getElementById('contextMenu');
-            menu.style.display = 'block';
+            if (currentDeck.length === 0) return;
 
-            let x = e.pageX || (e.touches && e.touches[0].pageX) || 0;
-            let y = e.pageY || (e.touches && e.touches[0].pageY) || 0;
-            menu.style.left = Math.min(x, window.innerWidth - 150) + 'px';
-            menu.style.top = Math.min(y, window.innerHeight - 90) + 'px';
-        }
+            const c = currentDeck[currentCardIndex];
+            const mainCard = cards.find(x => x.id === c.id);
+            const todayStr = new Date().toISOString().split('T')[0];
 
-        function closeContextMenu() {
-            document.getElementById('contextMenu').style.display = 'none';
-        }
-        document.addEventListener('click', closeContextMenu);
-
-        function handleMenuEdit() {
-            closeContextMenu();
-            if (contextTargetType === 'card') {
-                const c = contextTargetData;
-                document.getElementById('modalHeading').innerText = 'Edit Flashcard';
-                document.getElementById('editCardId').value = c.id;
-                document.getElementById('inputSubject').value = c.subject;
-                document.getElementById('inputChapter').value = c.chapter;
-                document.getElementById('inputQuestion').value = c.question;
-                document.getElementById('inputAnswer').value = c.answer;
-                document.getElementById('inputImage').value = '';
-                openModal();
-            } else if (contextTargetType === 'chapter') {
-                document.getElementById('renameInput').value = contextTargetData;
-                document.getElementById('renameModal').style.display = 'flex';
+            if (mainCard.lastRevisedDate === todayStr) {
+                mainCard.lastRevisedDate = null;
+            } else {
+                mainCard.lastRevisedDate = todayStr;
             }
-        }
 
-        function handleMenuDelete() {
-            closeContextMenu();
-            if (contextTargetType === 'card') {
-                document.getElementById('deleteConfirmMsg').innerText = 'Delete this flashcard?';
-                document.getElementById('confirmDeleteBtn').onclick = () => {
-                    cards = cards.filter(c => c.id !== contextTargetData.id);
-                    currentDeck = currentDeck.filter(c => c.id !== contextTargetData.id);
-                    saveCards();
-                    if (currentIndex >= currentDeck.length) currentIndex = Math.max(0, currentDeck.length - 1);
-                    closeDeleteModal();
-                    renderCard();
-                };
-                document.getElementById('deleteConfirmModal').style.display = 'flex';
-            } else if (contextTargetType === 'chapter') {
-                document.getElementById('deleteConfirmMsg').innerText =
-                    `Delete chapter "${contextTargetData}" and all its cards?`;
-                document.getElementById('confirmDeleteBtn').onclick = () => {
-                    cards = cards.filter(c => !(c.subject === selectedSubject && c.chapter === contextTargetData));
-                    saveCards();
-                    closeDeleteModal();
-                    renderChapterView();
-                };
-                document.getElementById('deleteConfirmModal').style.display = 'flex';
-            }
-        }
-
-        function closeDeleteModal() {
-            document.getElementById('deleteConfirmModal').style.display = 'none';
-        }
-
-        function closeRenameModal() {
-            document.getElementById('renameModal').style.display = 'none';
-        }
-
-        function submitRenameChapter() {
-            const newName = document.getElementById('renameInput').value.trim();
-            if (!newName) return;
-            cards.forEach(c => {
-                if (c.subject === selectedSubject && c.chapter === contextTargetData) {
-                    c.chapter = newName;
-                }
-            });
             saveCards();
-            closeRenameModal();
-            renderChapterView();
+            renderCard();
+        }
+
+        function toggleSaveForLater(e) {
+            e.stopPropagation();
+            if (currentDeck.length === 0) return;
+
+            const c = currentDeck[currentCardIndex];
+            const mainCard = cards.find(x => x.id === c.id);
+
+            mainCard.saveForLater = !mainCard.saveForLater;
+            c.saveForLater = mainCard.saveForLater;
+
+            saveCards();
+
+            if (isRevisionLaterMode) {
+                currentDeck = cards.filter(x => x.saveForLater);
+                if (currentCardIndex >= currentDeck.length) currentCardIndex = 0;
+            }
+
+            renderCard();
         }
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  LONG PRESS
+        //  CONTEXT MENU (Edit / Delete)
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function attachLongPress(selector, callback) {
-            document.querySelectorAll(selector).forEach(el => {
-                let timer;
-                el.addEventListener('touchstart', (e) => {
-                    timer = setTimeout(() => callback(e, el), 550);
-                }, { passive: true });
-                el.addEventListener('touchend', () => clearTimeout(timer));
-                el.addEventListener('touchmove', () => clearTimeout(timer));
-            });
+        const cardElem = document.getElementById('flashcard');
+        const contextMenu = document.getElementById('contextMenu');
+
+        cardElem.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            if (currentDeck.length === 0) return;
+
+            contextMenu.style.top = `${e.clientY}px`;
+            contextMenu.style.left = `${e.clientX}px`;
+            contextMenu.style.display = 'block';
+        });
+
+        let pressTimer;
+        cardElem.addEventListener('touchstart', (e) => {
+            pressTimer = setTimeout(() => {
+                if (currentDeck.length === 0) return;
+                const touch = e.touches[0];
+                contextMenu.style.top = `${touch.clientY}px`;
+                contextMenu.style.left = `${touch.clientX}px`;
+                contextMenu.style.display = 'block';
+            }, 600);
+        });
+
+        cardElem.addEventListener('touchend', () => clearTimeout(pressTimer));
+        cardElem.addEventListener('touchmove', () => clearTimeout(pressTimer));
+
+        document.addEventListener('click', () => {
+            contextMenu.style.display = 'none';
+        });
+
+        function deleteCardFromContext() {
+            contextMenu.style.display = 'none';
+            if (currentDeck.length === 0) return;
+
+            const c = currentDeck[currentCardIndex];
+            if (confirm('Are you sure you want to delete this card?')) {
+                cards = cards.filter(x => x.id !== c.id);
+                saveCards();
+
+                if (isRevisionLaterMode) {
+                    currentDeck = cards.filter(x => x.saveForLater);
+                } else {
+                    currentDeck = cards.filter(x => x.subject === selectedSubject && x.chapter === selectedChapter);
+                }
+
+                if (currentDeck.length === 0) {
+                    if (isRevisionLaterMode) {
+                        renderSubjectView();
+                    } else {
+                        renderChapterView();
+                    }
+                } else {
+                    renderCard();
+                }
+            }
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  MODAL
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        function openModal() {
-            if (selectedSubject) document.getElementById('inputSubject').value = selectedSubject;
+        function editCardFromContext() {
+            contextMenu.style.display = 'none';
+            if (currentDeck.length === 0) return;
+
+            const c = currentDeck[currentCardIndex];
+            editingCardId = c.id;
+
+            document.getElementById('modalTitle').innerText = 'Edit Flashcard';
+            document.getElementById('modalSubject').value = c.subject;
+            document.getElementById('modalChapter').value = c.chapter;
+            document.getElementById('modalQuestion').value = c.question;
+            document.getElementById('modalAnswer').value = c.answer;
+            document.getElementById('modalImage').value = '';
+
             document.getElementById('cardModal').style.display = 'flex';
-            document.getElementById('chapterSuggestions').style.display = 'none';
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  ADD / EDIT MODAL & AUTO-SUGGESTIONS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function openAddModal() {
+            editingCardId = null;
+            document.getElementById('modalTitle').innerText = 'Add New Flashcard';
+
+            if (selectedSubject) {
+                document.getElementById('modalSubject').value = selectedSubject;
+            }
+            if (selectedChapter) {
+                document.getElementById('modalChapter').value = selectedChapter;
+            } else {
+                document.getElementById('modalChapter').value = '';
+            }
+
+            document.getElementById('modalQuestion').value = '';
+            document.getElementById('modalAnswer').value = '';
+            document.getElementById('modalImage').value = '';
+
+            document.getElementById('cardModal').style.display = 'flex';
         }
 
         function closeModal() {
             document.getElementById('cardModal').style.display = 'none';
-            document.getElementById('addCardForm').reset();
-            document.getElementById('editCardId').value = '';
-            document.getElementById('modalHeading').innerText = 'Add New Flashcard';
-            document.getElementById('chapterSuggestions').style.display = 'none';
+            document.getElementById('suggestionsBox').style.display = 'none';
         }
 
-        function saveCustomCard(e) {
-            e.preventDefault();
-            const editId = document.getElementById('editCardId').value;
-            const subject = document.getElementById('inputSubject').value;
-            const chapter = document.getElementById('inputChapter').value.trim();
-            const question = document.getElementById('inputQuestion').value.trim();
-            const answer = document.getElementById('inputAnswer').value.trim();
-            const fileInput = document.getElementById('inputImage');
+        function showChapterSuggestions() {
+            const subj = document.getElementById('modalSubject').value;
+            const inputVal = document.getElementById('modalChapter').value.toLowerCase().trim();
+            const suggestionsBox = document.getElementById('suggestionsBox');
 
-            if (!chapter || !question) return;
+            const existingChaps = [...new Set(
+                cards.filter(c => c.subject === subj).map(c => c.chapter)
+            )];
 
-            const save = (imgBase64 = '') => {
-                if (editId) {
-                    const idx = cards.findIndex(c => c.id == editId);
-                    if (idx !== -1) {
-                        cards[idx].subject = subject;
-                        cards[idx].chapter = chapter;
-                        cards[idx].question = question;
-                        cards[idx].answer = answer;
-                        if (imgBase64) cards[idx].image = imgBase64;
+            const matches = existingChaps.filter(ch => ch.toLowerCase().includes(inputVal));
+
+            if (matches.length > 0 && inputVal.length > 0) {
+                suggestionsBox.innerHTML = '';
+                matches.forEach(ch => {
+                    const item = document.createElement('div');
+                    item.className = 'suggestion-item';
+                    item.innerText = ch;
+                    item.onclick = () => {
+                        document.getElementById('modalChapter').value = ch;
+                        suggestionsBox.style.display = 'none';
+                    };
+                    suggestionsBox.appendChild(item);
+                });
+                suggestionsBox.style.display = 'block';
+            } else {
+                suggestionsBox.style.display = 'none';
+            }
+        }
+
+        function updateChapterSuggestions() {
+            document.getElementById('modalChapter').value = '';
+            showChapterSuggestions();
+        }
+
+        function saveCard() {
+            const subject = document.getElementById('modalSubject').value;
+            const chapter = document.getElementById('modalChapter').value.trim();
+            const question = document.getElementById('modalQuestion').value.trim();
+            const answer = document.getElementById('modalAnswer').value.trim();
+            const fileInput = document.getElementById('modalImage');
+
+            if (!chapter || !question || !answer) {
+                alert('Please fill in Chapter, Question, and Answer!');
+                return;
+            }
+
+            const save = (imgBase64 = null) => {
+                if (editingCardId) {
+                    const card = cards.find(x => x.id === editingCardId);
+                    if (card) {
+                        card.subject = subject;
+                        card.chapter = chapter;
+                        card.question = question;
+                        card.answer = answer;
+                        if (imgBase64) card.image = imgBase64;
                     }
                 } else {
+                    const newId = Date.now();
                     cards.push({
-                        id: Date.now() + Math.random(),
+                        id: newId,
                         subject,
                         chapter,
                         question,
@@ -2158,6 +1971,8 @@
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         //  INIT
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        initTheme();
+        loadCards();
         renderSubjectView();
     </script>
 </body>
