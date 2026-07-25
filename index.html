@@ -839,88 +839,61 @@
             border: none;
             font-size: 1.15rem;
             background: var(--stats-bg);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-medium);
             color: var(--text-muted);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         }
         .action-btn:active {
             transform: scale(0.88);
         }
-        .action-btn.revision-btn {
-            background: rgba(239, 68, 68, 0.08);
-            border-color: rgba(239, 68, 68, 0.20);
-            color: #ef4444;
-        }
+
         .action-btn.revision-btn.active {
-            background: rgba(16, 185, 129, 0.12);
-            border-color: rgba(16, 185, 129, 0.25);
-            color: #34d399;
-        }
-        .action-btn.later-btn {
-            background: rgba(168, 85, 247, 0.08);
-            border-color: rgba(168, 85, 247, 0.18);
-            color: #a855f7;
-        }
-        .action-btn.later-btn.saved {
-            background: var(--accent-purple);
-            border-color: var(--accent-purple);
+            background: linear-gradient(135deg, var(--accent-green), #059669);
             color: #fff;
+            border: none;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+        }
+        .action-btn.later-btn.active {
+            background: linear-gradient(135deg, var(--accent-purple), #7b2cbf);
+            color: #fff;
+            border: none;
+            box-shadow: 0 6px 20px rgba(157, 78, 221, 0.35);
         }
 
-        body.theme-light .action-btn.revision-btn {
-            background: #fee2e2;
-            border-color: #fca5a5;
-            color: #dc2626;
-        }
-        body.theme-light .action-btn.revision-btn.active {
-            background: #d1fae5;
-            border-color: #6ee7b7;
-            color: #059669;
-        }
-        body.theme-light .action-btn.later-btn {
-            background: #ede9fe;
-            border-color: #c4b5fd;
-            color: #7c3aed;
-        }
-        body.theme-light .action-btn.later-btn.saved {
-            background: #7c3aed;
-            border-color: #7c3aed;
-            color: #ffffff;
-        }
-
-        /* ─── DECK NAV ─── */
+        /* ─── DECK NAVIGATION ─── */
         .deck-nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 100%;
-            flex-shrink: 0;
-            gap: 8px;
-            padding: 4px 0;
-        }
-        .deck-nav .nav-btn {
-            background: var(--stats-bg);
+            justify-content: space-between;
+            background: var(--nav-bg);
             border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 6px 12px;
+            flex-shrink: 0;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .nav-btn {
+            background: var(--stats-bg);
+            border: 1px solid var(--border-medium);
             color: var(--text-primary);
-            padding: 8px 18px;
-            border-radius: 12px;
+            padding: 6px 16px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.82rem;
-            transition: all 0.20s ease;
             display: flex;
             align-items: center;
             gap: 6px;
-            flex-shrink: 0;
+            transition: all 0.2s ease;
         }
-        .deck-nav .nav-btn:active {
-            transform: scale(0.94);
+        .nav-btn:active {
+            transform: scale(0.92);
         }
-        .deck-nav .counter {
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.2px;
-            flex-shrink: 0;
+        .counter {
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-size: 0.90rem;
+            letter-spacing: 0.5px;
             transition: color 0.3s;
         }
 
@@ -940,43 +913,75 @@
             font-weight: 600;
         }
 
-        /* ─── CONTEXT MENU ─── */
-        .context-menu {
-            position: fixed;
-            background: var(--context-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-light);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
-            border-radius: 14px;
-            padding: 6px;
-            display: none;
-            z-index: 1000;
-            min-width: 140px;
-            transition: background 0.3s, border-color 0.3s;
+        /* ─── CENTERED SUNDAR CARD INTERFACE (Action Modal) ─── */
+        .action-modal-card {
+            background: var(--modal-bg);
+            border: 1px solid var(--border-accent);
+            border-radius: 24px;
+            padding: 24px 22px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .context-menu-item {
-            padding: 10px 14px;
+        @keyframes popIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .action-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .action-card-title {
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--text-primary);
-            font-size: 0.82rem;
-            font-weight: 500;
+        }
+        .action-card-close {
             cursor: pointer;
-            border-radius: 8px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+        .action-card-close:hover {
+            color: var(--text-primary);
+        }
+        .action-card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .action-card-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            background: var(--stats-bg);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            transition: all 0.15s ease;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .context-menu-item:hover {
-            background: rgba(0, 210, 255, 0.08);
+        .action-card-btn:active {
+            transform: scale(0.96);
+        }
+        .action-card-btn.edit {
+            border-color: rgba(0, 210, 255, 0.3);
             color: var(--accent-blue);
+            background: rgba(0, 210, 255, 0.06);
         }
-        .context-menu-item.delete:hover {
-            background: rgba(239, 68, 68, 0.12);
+        .action-card-btn.delete {
+            border-color: rgba(239, 68, 68, 0.3);
             color: #ef4444;
-        }
-        .context-menu-item i {
-            width: 18px;
-            text-align: center;
+            background: rgba(239, 68, 68, 0.06);
         }
 
         /* ─── MODALS ─── */
@@ -995,7 +1000,6 @@
         body.theme-light .modal-overlay {
             background: rgba(15, 23, 42, 0.50);
         }
-
         .modal-box {
             background: var(--modal-bg);
             border: 1px solid var(--border-light);
@@ -1008,52 +1012,38 @@
             overflow-y: auto;
             transition: background 0.3s, border-color 0.3s;
         }
-        .modal-box::-webkit-scrollbar {
-            width: 3px;
-        }
-        .modal-box::-webkit-scrollbar-thumb {
-            background: var(--border-medium);
-            border-radius: 10px;
-        }
-
         .modal-head {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
         .modal-head h3 {
-            color: var(--accent-blue);
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 700;
+            color: var(--text-primary);
             transition: color 0.3s;
         }
         .modal-close {
-            cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-muted);
-            transition: all 0.20s ease;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
         }
         .modal-close:hover {
-            background: var(--border-light);
             color: var(--text-primary);
         }
 
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             position: relative;
         }
         .form-group label {
             display: block;
-            margin-bottom: 4px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
+            margin-bottom: 4px;
             font-weight: 500;
             transition: color 0.3s;
         }
@@ -1064,20 +1054,13 @@
             border: 1px solid var(--border-light);
             border-radius: 10px;
             color: var(--text-primary);
-            outline: none;
             font-size: 0.88rem;
+            outline: none;
             transition: all 0.20s ease;
-            font-family: 'Poppins', sans-serif;
         }
         .form-control:focus {
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.08);
-            background: var(--surface-bg);
         }
-        .form-control::placeholder {
-            color: var(--text-muted);
-        }
-
         textarea.form-control {
             resize: vertical;
             min-height: 60px;
@@ -1165,7 +1148,6 @@
     </style>
 </head>
 <body>
-
     <div class="glow-orb glow-orb--1"></div>
     <div class="glow-orb glow-orb--2"></div>
     <div class="glow-orb glow-orb--3"></div>
@@ -1178,42 +1160,42 @@
                     <i class="fa-solid fa-sun" id="themeIcon"></i>
                     <span id="themeLabel">Light</span>
                 </button>
-                <a href="https://Priyanshusingh.pages.dev" target="_blank" class="site-link">
+                <a href="https://flashrecall.verce.app" target="_blank" class="site-link">
                     <i class="fa-solid fa-globe"></i> Visit Site
                 </a>
             </div>
         </header>
 
         <div class="nav-bar">
-            <button class="back-btn" id="backBtn" onclick="handleBack()">
-                <i class="fa-solid fa-chevron-left"></i> Back
+            <button class="back-btn" id="backBtn" onclick="goBack()">
+                <i class="fa-solid fa-arrow-left"></i> Back
             </button>
-            <div id="navTitle">Subjects</div>
+            <span id="navTitle">Subjects</span>
             <button class="btn-add" onclick="openAddModal()">
                 <i class="fa-solid fa-plus"></i> Add Card
             </button>
         </div>
 
-        <div class="stats-strip">
+        <div class="stats-strip" id="statsStrip">
             <div class="stat-item">
-                <i class="fa-solid fa-cards-blank" style="color:var(--accent-blue)"></i>
+                <i class="fa-solid fa-layer-group" style="color: var(--accent-blue);"></i>
                 Total: <b id="statTotal">0</b>
             </div>
             <div class="stat-item">
-                <i class="fa-solid fa-clock-rotate-left" style="color:var(--accent-purple)"></i>
-                Saved: <b id="statSaved">0</b>
+                <i class="fa-solid fa-check-double" style="color: var(--accent-green);"></i>
+                Revised Today: <b id="statRevised">0</b>
             </div>
             <div class="stat-item">
-                <i class="fa-solid fa-fire" style="color:var(--accent-amber)"></i>
-                Today: <b id="statToday">0</b>
+                <i class="fa-solid fa-bookmark" style="color: var(--accent-purple);"></i>
+                Saved: <b id="statSaved">0</b>
             </div>
         </div>
 
         <div class="hero-banner" id="heroBanner">
             <div class="hero-emoji">🚀</div>
             <div class="hero-text">
-                <div class="title">Master <span>JEE Concepts</span> Fast</div>
-                <div class="sub">3D Flashcards with Smart Recall Tracking</div>
+                <div class="title">Boost Your <span>JEE Revision</span></div>
+                <div class="sub">Active recall & spaced repetition for top rank</div>
             </div>
         </div>
 
@@ -1224,7 +1206,7 @@
                 <span class="card-badge" id="badgePhysics">0 cards</span>
             </div>
             <div class="subject-card chemistry" onclick="selectSubject('Chemistry')">
-                <i class="fa-solid fa-flask-vial"></i>
+                <i class="fa-solid fa-flask"></i>
                 <h2>Chemistry</h2>
                 <span class="card-badge" id="badgeChemistry">0 cards</span>
             </div>
@@ -1233,9 +1215,9 @@
                 <h2>Mathematics</h2>
                 <span class="card-badge" id="badgeMaths">0 cards</span>
             </div>
-            <div class="subject-card later" onclick="openRevisionLater()">
+            <div class="subject-card later" onclick="openSaveForLaterDeck()">
                 <i class="fa-solid fa-bookmark"></i>
-                <h2>Save for Later</h2>
+                <h2>Saved for Later</h2>
                 <span class="card-badge" id="badgeLater">0 cards</span>
             </div>
         </div>
@@ -1300,16 +1282,24 @@
         </div>
 
         <footer class="app-footer">
-            Built by <a href="https://Priyanshusingh.pages.dev" target="_blank">PRIYANSHU SINGH</a>
+            Built by <a href="https://flashrecall.verce.app" target="_blank">JEE FlashRecall Team</a>
         </footer>
     </div>
 
-    <div class="context-menu" id="contextMenu">
-        <div class="context-menu-item" onclick="editCardFromContext()">
-            <i class="fa-solid fa-pen-to-square"></i> Edit Card
-        </div>
-        <div class="context-menu-item delete" onclick="deleteCardFromContext()">
-            <i class="fa-solid fa-trash-can"></i> Delete Card
+    <div class="modal-overlay" id="actionModal">
+        <div class="action-modal-card">
+            <div class="action-card-header">
+                <div class="action-card-title" id="actionModalTitle">Manage Item</div>
+                <div class="action-card-close" onclick="closeActionModal()">&times;</div>
+            </div>
+            <div class="action-card-body">
+                <button class="action-card-btn edit" onclick="performModalEdit()">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                </button>
+                <button class="action-card-btn delete" onclick="performModalDelete()">
+                    <i class="fa-solid fa-trash-can"></i> Delete
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1331,103 +1321,46 @@
 
             <div class="form-group">
                 <label>Chapter Name</label>
-                <input type="text" id="modalChapter" class="form-control" placeholder="e.g. Rotation, Thermodynamics" autocomplete="off" oninput="showChapterSuggestions()" />
+                <input type="text" id="modalChapter" class="form-control" placeholder="e.g. Thermodynamics" oninput="showChapterSuggestions()" autocomplete="off" />
                 <div class="suggestions-box" id="suggestionsBox"></div>
             </div>
 
             <div class="form-group">
-                <label>Question</label>
-                <textarea id="modalQuestion" class="form-control" placeholder="Type the question or concept..."></textarea>
+                <label>Question / Concept</label>
+                <textarea id="modalQuestion" class="form-control" placeholder="Enter question or formula..."></textarea>
             </div>
 
             <div class="form-group">
-                <label>Answer</label>
-                <textarea id="modalAnswer" class="form-control" placeholder="Type the solution or answer..."></textarea>
+                <label>Answer / Solution</label>
+                <textarea id="modalAnswer" class="form-control" placeholder="Enter answer or explanation..."></textarea>
             </div>
 
             <div class="form-group">
-                <label>Image (Optional)</label>
+                <label>Image Attachment (Optional)</label>
                 <input type="file" id="modalImage" class="form-control" accept="image/*" />
             </div>
 
             <div class="modal-actions">
                 <button class="btn-secondary" onclick="closeModal()">Cancel</button>
-                <button class="btn-primary" onclick="saveCard()">Save Card</button>
+                <button class="btn-primary" onclick="saveModalCard()">Save Flashcard</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  DATA INITIALIZATION & STORAGE
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         const STORAGE_KEY = 'jee_flashrecall_cards_v2';
 
         const DEFAULT_CARDS = [
-            {
-                id: 1,
-                subject: 'Physics',
-                chapter: 'Rotational Motion',
-                question: 'What is the Moment of Inertia of a uniform solid sphere about its diameter?',
-                answer: 'I = (2/5) M R²',
-                image: null,
-                lastRevisedDate: null,
-                saveForLater: false
-            },
-            {
-                id: 2,
-                subject: 'Physics',
-                chapter: 'Thermodynamics',
-                question: 'What is the Efficiency (η) of a Carnot Engine?',
-                answer: 'η = 1 - (T₂ / T₁), where T₁ is Source Temp and T₂ is Sink Temp (in Kelvin).',
-                image: null,
-                lastRevisedDate: null,
-                saveForLater: false
-            },
-            {
-                id: 3,
-                subject: 'Chemistry',
-                chapter: 'Chemical Bonding',
-                question: 'What is the hybridization and shape of SF₆?',
-                answer: 'Hybridization: sp³d² | Shape: Octahedral',
-                image: null,
-                lastRevisedDate: null,
-                saveForLater: false
-            },
-            {
-                id: 4,
-                subject: 'Chemistry',
-                chapter: 'Organic Chemistry',
-                question: 'What is the major product of Reimer-Tiemann Reaction?',
-                answer: 'Salicylaldehyde (2-hydroxybenzaldehyde) from Phenol using CHCl₃ + KOH.',
-                image: null,
-                lastRevisedDate: null,
-                saveForLater: false
-            },
-            {
-                id: 5,
-                subject: 'Mathematics',
-                chapter: 'Calculus',
-                question: 'What is ∫ eᵃˣ sin(bx) dx?',
-                answer: '[ eᵃˣ / (a² + b²) ] * [ a sin(bx) - b cos(bx) ] + C',
-                image: null,
-                lastRevisedDate: null,
-                saveForLater: false
-            },
-            {
-                id: 6,
-                subject: 'Mathematics',
-                chapter: 'Matrices & Determinants',
-                question: 'Property of Adjoint: What is det(adj A) for an n × n matrix A?',
-                answer: '|adj A| = |A|ⁿ⁻¹',
-                image: null,
-                lastRevisedDate: null,
-                saveForLater: false
-            }
+            { id: 1, subject: 'Physics', chapter: 'Electrostatics', question: 'What is Gauss’s Law for Electricity?', answer: '∮ E · dA = Q_enclosed / ε₀', image: null, lastRevisedDate: null, saveForLater: false },
+            { id: 2, subject: 'Physics', chapter: 'Thermodynamics', question: 'What is the efficiency of a Carnot Engine?', answer: 'η = 1 - (T₂ / T₁), where T₁ is Source Temp and T₂ is Sink Temp (in Kelvin).', image: null, lastRevisedDate: null, saveForLater: false },
+            { id: 3, subject: 'Chemistry', chapter: 'Chemical Bonding', question: 'What is the hybridization and shape of SF₆?', answer: 'Hybridization: sp³d² | Shape: Octahedral', image: null, lastRevisedDate: null, saveForLater: false },
+            { id: 4, subject: 'Chemistry', chapter: 'Organic Chemistry', question: 'What is the major product of Reimer-Tiemann Reaction?', answer: 'Salicylaldehyde (2-hydroxybenzaldehyde) from Phenol using CHCl₃ + KOH.', image: null, lastRevisedDate: null, saveForLater: false },
+            { id: 5, subject: 'Mathematics', chapter: 'Calculus', question: 'What is ∫ eᵃˣ sin(bx) dx?', answer: '[ eᵃˣ / (a² + b²) ] * [ a sin(bx) - b cos(bx) ] + C', image: null, lastRevisedDate: null, saveForLater: false },
+            { id: 6, subject: 'Mathematics', chapter: 'Matrices & Determinants', question: 'Property of Adjoint: What is det(adj A) for an n × n matrix A?', answer: '|adj A| = |A|ⁿ⁻¹', image: null, lastRevisedDate: null, saveForLater: false }
         ];
 
         let cards = [];
-        let currentView = 'subject'; 
+        let currentView = 'subject';
         let selectedSubject = '';
         let selectedChapter = '';
         let currentDeck = [];
@@ -1435,14 +1368,13 @@
         let editingCardId = null;
         let isRevisionLaterMode = false;
 
+        let activeTargetType = null; // 'card' or 'chapter'
+        let activeChapterTarget = null;
+
         function loadCards() {
             const raw = localStorage.getItem(STORAGE_KEY);
             if (raw) {
-                try {
-                    cards = JSON.parse(raw);
-                } catch (e) {
-                    cards = DEFAULT_CARDS;
-                }
+                try { cards = JSON.parse(raw); } catch (e) { cards = DEFAULT_CARDS; }
             } else {
                 cards = DEFAULT_CARDS;
                 saveCards();
@@ -1454,9 +1386,7 @@
             updateGlobalStats();
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  THEME TOGGLE
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        /* ─── THEME TOGGLE ─── */
         function toggleTheme() {
             const isLight = document.body.classList.toggle('theme-light');
             document.getElementById('themeIcon').className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
@@ -1473,19 +1403,16 @@
             }
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  GLOBAL STATS & BADGES
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        /* ─── GLOBAL STATS & BADGES ─── */
         function updateGlobalStats() {
             const todayStr = new Date().toISOString().split('T')[0];
-
             const total = cards.length;
             const saved = cards.filter(c => c.saveForLater).length;
-            const todayCount = cards.filter(c => c.lastRevisedDate === todayStr).length;
+            const revised = cards.filter(c => c.lastRevisedDate === todayStr).length;
 
             document.getElementById('statTotal').innerText = total;
+            document.getElementById('statRevised').innerText = revised;
             document.getElementById('statSaved').innerText = saved;
-            document.getElementById('statToday').innerText = todayCount;
 
             const phys = cards.filter(c => c.subject === 'Physics').length;
             const chem = cards.filter(c => c.subject === 'Chemistry').length;
@@ -1497,9 +1424,7 @@
             document.getElementById('badgeLater').innerText = `${saved} card${saved !== 1 ? 's' : ''}`;
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  VIEW NAVIGATION
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        /* ─── VIEW NAVIGATION ─── */
         function renderSubjectView() {
             currentView = 'subject';
             isRevisionLaterMode = false;
@@ -1534,8 +1459,8 @@
 
             const grid = document.getElementById('chapterView');
             grid.innerHTML = '';
-
             const chapters = Object.keys(chMap);
+
             if (chapters.length === 0) {
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align:center; padding: 40px; color: var(--text-muted);">
@@ -1554,6 +1479,22 @@
                     <span><i class="fa-regular fa-folder"></i> ${ch}</span>
                     <span class="ch-count">${chMap[ch]}</span>
                 `;
+
+                // Chapter Long Press & Right Click
+                btn.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    openActionModal('chapter', ch);
+                });
+
+                let timer;
+                btn.addEventListener('touchstart', (e) => {
+                    timer = setTimeout(() => {
+                        openActionModal('chapter', ch);
+                    }, 500);
+                });
+                btn.addEventListener('touchend', () => clearTimeout(timer));
+                btn.addEventListener('touchmove', () => clearTimeout(timer));
+
                 grid.appendChild(btn);
             });
         }
@@ -1562,22 +1503,20 @@
             selectedSubject = subj;
             selectedChapter = chap;
             isRevisionLaterMode = false;
-
             currentDeck = cards.filter(c => c.subject === subj && c.chapter === chap);
             currentCardIndex = 0;
             renderDeckView();
         }
 
-        function openRevisionLater() {
+        function openSaveForLaterDeck() {
             isRevisionLaterMode = true;
             currentDeck = cards.filter(c => c.saveForLater);
             currentCardIndex = 0;
 
             if (currentDeck.length === 0) {
-                alert('No cards saved for later!');
+                alert('No cards saved for later yet!');
                 return;
             }
-
             renderDeckView();
         }
 
@@ -1590,7 +1529,7 @@
             document.getElementById('backBtn').style.display = 'inline-flex';
 
             if (isRevisionLaterMode) {
-                document.getElementById('navTitle').innerText = 'Save for Later';
+                document.getElementById('navTitle').innerText = 'Saved For Later';
             } else {
                 document.getElementById('navTitle').innerText = `${selectedSubject} • ${selectedChapter}`;
             }
@@ -1598,7 +1537,7 @@
             renderCard();
         }
 
-        function handleBack() {
+        function goBack() {
             if (currentView === 'deck') {
                 if (isRevisionLaterMode) {
                     renderSubjectView();
@@ -1610,12 +1549,15 @@
             }
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  FLASHCARD INTERACTION & REVISION LOGIC
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        /* ─── CARD RENDER & FLIP ─── */
+        function flipCard() {
+            const cardElem = document.getElementById('flashcard');
+            cardElem.classList.toggle('flipped');
+        }
+
         function renderCard() {
-            const cardEl = document.getElementById('flashcard');
-            cardEl.classList.remove('flipped');
+            const cardElem = document.getElementById('flashcard');
+            cardElem.classList.remove('flipped');
 
             if (currentDeck.length === 0) {
                 document.getElementById('cardQuestion').innerText = 'No cards available in this deck.';
@@ -1635,12 +1577,12 @@
 
             document.getElementById('cardSubjectFront').innerText = c.subject + ' • ' + c.chapter;
             document.getElementById('cardSubjectBack').innerText = c.subject + ' • ' + c.chapter;
-
             document.getElementById('cardQuestion').innerText = c.question;
             document.getElementById('cardAnswer').innerText = c.answer;
 
             const imgFront = document.getElementById('cardImgFront');
             const imgBack = document.getElementById('cardImgBack');
+
             if (c.image) {
                 imgFront.src = c.image;
                 imgFront.style.display = 'block';
@@ -1662,7 +1604,6 @@
             const revBtn = document.getElementById('revisedToggleBtn');
 
             const tagText = getRelativeTimeText(c.lastRevisedDate);
-
             timeTagFront.innerHTML = `<i class="fa-regular fa-clock"></i> ${tagText}`;
             timeTagBack.innerHTML = `<i class="fa-regular fa-clock"></i> ${tagText}`;
 
@@ -1686,8 +1627,8 @@
             // SAVE FOR LATER BUTTON
             const laterBtn = document.getElementById('saveLaterBtn');
             if (c.saveForLater) {
-                laterBtn.className = 'action-btn later-btn saved';
-                laterBtn.title = 'Saved for Later (Tap to remove)';
+                laterBtn.className = 'action-btn later-btn active';
+                laterBtn.title = 'Saved for Later! Tap to remove';
             } else {
                 laterBtn.className = 'action-btn later-btn';
                 laterBtn.title = 'Save for Later';
@@ -1696,26 +1637,17 @@
 
         function getRelativeTimeText(dateStr) {
             if (!dateStr) return 'Not revised';
-
             const today = new Date();
             today.setHours(0, 0, 0, 0);
+            const revisedDate = new Date(dateStr);
+            revisedDate.setHours(0, 0, 0, 0);
 
-            const revDate = new Date(dateStr);
-            revDate.setHours(0, 0, 0, 0);
-
-            const diffTime = today - revDate;
+            const diffTime = today - revisedDate;
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-            if (diffDays === 0) return 'Revised Today';
-            if (diffDays === 1) return 'Revised Yesterday';
-            if (diffDays < 30) return `Revised ${diffDays}d ago`;
-
-            const months = Math.floor(diffDays / 30);
-            return `Revised ${months}m ago`;
-        }
-
-        function flipCard() {
-            document.getElementById('flashcard').classList.toggle('flipped');
+            if (diffDays === 0) return 'Revised today';
+            if (diffDays === 1) return 'Revised yesterday';
+            return `Revised ${diffDays}d ago`;
         }
 
         function prevCard() {
@@ -1733,7 +1665,6 @@
         function toggleRevised(e) {
             e.stopPropagation();
             if (currentDeck.length === 0) return;
-
             const c = currentDeck[currentCardIndex];
             const mainCard = cards.find(x => x.id === c.id);
             const todayStr = new Date().toISOString().split('T')[0];
@@ -1743,7 +1674,6 @@
             } else {
                 mainCard.lastRevisedDate = todayStr;
             }
-
             saveCards();
             renderCard();
         }
@@ -1751,110 +1681,125 @@
         function toggleSaveForLater(e) {
             e.stopPropagation();
             if (currentDeck.length === 0) return;
-
             const c = currentDeck[currentCardIndex];
             const mainCard = cards.find(x => x.id === c.id);
 
             mainCard.saveForLater = !mainCard.saveForLater;
             c.saveForLater = mainCard.saveForLater;
-
             saveCards();
 
             if (isRevisionLaterMode) {
                 currentDeck = cards.filter(x => x.saveForLater);
                 if (currentCardIndex >= currentDeck.length) currentCardIndex = 0;
             }
-
             renderCard();
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  CONTEXT MENU (Edit / Delete)
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        /* ─── ACTION MODAL (Centered Interface for Edit/Delete) ─── */
         const cardElem = document.getElementById('flashcard');
-        const contextMenu = document.getElementById('contextMenu');
 
         cardElem.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             if (currentDeck.length === 0) return;
-
-            contextMenu.style.top = `${e.clientY}px`;
-            contextMenu.style.left = `${e.clientX}px`;
-            contextMenu.style.display = 'block';
+            openActionModal('card');
         });
 
         let pressTimer;
         cardElem.addEventListener('touchstart', (e) => {
             pressTimer = setTimeout(() => {
                 if (currentDeck.length === 0) return;
-                const touch = e.touches[0];
-                contextMenu.style.top = `${touch.clientY}px`;
-                contextMenu.style.left = `${touch.clientX}px`;
-                contextMenu.style.display = 'block';
+                openActionModal('card');
             }, 600);
         });
-
         cardElem.addEventListener('touchend', () => clearTimeout(pressTimer));
         cardElem.addEventListener('touchmove', () => clearTimeout(pressTimer));
 
-        document.addEventListener('click', () => {
-            contextMenu.style.display = 'none';
-        });
+        function openActionModal(type, targetChapterName = null) {
+            activeTargetType = type;
+            activeChapterTarget = targetChapterName;
 
-        function deleteCardFromContext() {
-            contextMenu.style.display = 'none';
-            if (currentDeck.length === 0) return;
+            const modalTitle = document.getElementById('actionModalTitle');
+            if (type === 'card') {
+                modalTitle.innerText = 'Manage Flashcard';
+            } else if (type === 'chapter') {
+                modalTitle.innerText = `Manage "${targetChapterName}"`;
+            }
 
-            const c = currentDeck[currentCardIndex];
-            if (confirm('Are you sure you want to delete this card?')) {
-                cards = cards.filter(x => x.id !== c.id);
-                saveCards();
+            document.getElementById('actionModal').style.display = 'flex';
+        }
 
-                if (isRevisionLaterMode) {
-                    currentDeck = cards.filter(x => x.saveForLater);
-                } else {
-                    currentDeck = cards.filter(x => x.subject === selectedSubject && x.chapter === selectedChapter);
-                }
+        function closeActionModal() {
+            document.getElementById('actionModal').style.display = 'none';
+        }
 
-                if (currentDeck.length === 0) {
-                    if (isRevisionLaterMode) {
-                        renderSubjectView();
-                    } else {
-                        renderChapterView();
-                    }
-                } else {
-                    renderCard();
+        function performModalEdit() {
+            closeActionModal();
+            if (activeTargetType === 'card') {
+                if (currentDeck.length === 0) return;
+                const c = currentDeck[currentCardIndex];
+                editingCardId = c.id;
+
+                document.getElementById('modalTitle').innerText = 'Edit Flashcard';
+                document.getElementById('modalSubject').value = c.subject;
+                document.getElementById('modalChapter').value = c.chapter;
+                document.getElementById('modalQuestion').value = c.question;
+                document.getElementById('modalAnswer').value = c.answer;
+                document.getElementById('modalImage').value = '';
+                document.getElementById('cardModal').style.display = 'flex';
+            } else if (activeTargetType === 'chapter') {
+                const newChapterName = prompt('Enter new Chapter name:', activeChapterTarget);
+                if (newChapterName && newChapterName.trim() !== '') {
+                    cards.forEach(c => {
+                        if (c.subject === selectedSubject && c.chapter === activeChapterTarget) {
+                            c.chapter = newChapterName.trim();
+                        }
+                    });
+                    saveCards();
+                    renderChapterView();
                 }
             }
         }
 
-        function editCardFromContext() {
-            contextMenu.style.display = 'none';
-            if (currentDeck.length === 0) return;
+        function performModalDelete() {
+            closeActionModal();
+            if (activeTargetType === 'card') {
+                if (currentDeck.length === 0) return;
+                const c = currentDeck[currentCardIndex];
+                if (confirm('Are you sure you want to delete this card?')) {
+                    cards = cards.filter(x => x.id !== c.id);
+                    saveCards();
 
-            const c = currentDeck[currentCardIndex];
-            editingCardId = c.id;
+                    if (isRevisionLaterMode) {
+                        currentDeck = cards.filter(x => x.saveForLater);
+                    } else {
+                        currentDeck = cards.filter(x => x.subject === selectedSubject && x.chapter === selectedChapter);
+                    }
 
-            document.getElementById('modalTitle').innerText = 'Edit Flashcard';
-            document.getElementById('modalSubject').value = c.subject;
-            document.getElementById('modalChapter').value = c.chapter;
-            document.getElementById('modalQuestion').value = c.question;
-            document.getElementById('modalAnswer').value = c.answer;
-            document.getElementById('modalImage').value = '';
-
-            document.getElementById('cardModal').style.display = 'flex';
+                    if (currentCardIndex >= currentDeck.length) {
+                        currentCardIndex = Math.max(0, currentDeck.length - 1);
+                    }
+                    renderCard();
+                }
+            } else if (activeTargetType === 'chapter') {
+                if (confirm(`Are you sure you want to delete chapter "${activeChapterTarget}" and all its cards?`)) {
+                    cards = cards.filter(c => !(c.subject === selectedSubject && c.chapter === activeChapterTarget));
+                    saveCards();
+                    renderChapterView();
+                }
+            }
         }
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  ADD / EDIT MODAL & AUTO-SUGGESTIONS
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        /* ─── ADD / EDIT MODAL ─── */
         function openAddModal() {
             editingCardId = null;
             document.getElementById('modalTitle').innerText = 'Add New Flashcard';
 
             if (selectedSubject) {
                 document.getElementById('modalSubject').value = selectedSubject;
+            } else {
+                document.getElementById('modalSubject').value = 'Physics';
             }
+
             if (selectedChapter) {
                 document.getElementById('modalChapter').value = selectedChapter;
             } else {
@@ -1864,7 +1809,6 @@
             document.getElementById('modalQuestion').value = '';
             document.getElementById('modalAnswer').value = '';
             document.getElementById('modalImage').value = '';
-
             document.getElementById('cardModal').style.display = 'flex';
         }
 
@@ -1878,10 +1822,7 @@
             const inputVal = document.getElementById('modalChapter').value.toLowerCase().trim();
             const suggestionsBox = document.getElementById('suggestionsBox');
 
-            const existingChaps = [...new Set(
-                cards.filter(c => c.subject === subj).map(c => c.chapter)
-            )];
-
+            const existingChaps = [...new Set(cards.filter(c => c.subject === subj).map(c => c.chapter))];
             const matches = existingChaps.filter(ch => ch.toLowerCase().includes(inputVal));
 
             if (matches.length > 0 && inputVal.length > 0) {
@@ -1903,11 +1844,10 @@
         }
 
         function updateChapterSuggestions() {
-            document.getElementById('modalChapter').value = '';
             showChapterSuggestions();
         }
 
-        function saveCard() {
+        function saveModalCard() {
             const subject = document.getElementById('modalSubject').value;
             const chapter = document.getElementById('modalChapter').value.trim();
             const question = document.getElementById('modalQuestion').value.trim();
@@ -1915,22 +1855,22 @@
             const fileInput = document.getElementById('modalImage');
 
             if (!chapter || !question || !answer) {
-                alert('Please fill in Chapter, Question, and Answer!');
+                alert('Please fill in Chapter, Question, and Answer fields.');
                 return;
             }
 
             const save = (imgBase64 = null) => {
                 if (editingCardId) {
-                    const card = cards.find(x => x.id === editingCardId);
-                    if (card) {
-                        card.subject = subject;
-                        card.chapter = chapter;
-                        card.question = question;
-                        card.answer = answer;
-                        if (imgBase64) card.image = imgBase64;
+                    const c = cards.find(x => x.id === editingCardId);
+                    if (c) {
+                        c.subject = subject;
+                        c.chapter = chapter;
+                        c.question = question;
+                        c.answer = answer;
+                        if (imgBase64 !== null) c.image = imgBase64;
                     }
                 } else {
-                    const newId = Date.now();
+                    const newId = cards.length > 0 ? Math.max(...cards.map(c => c.id)) + 1 : 1;
                     cards.push({
                         id: newId,
                         subject,
